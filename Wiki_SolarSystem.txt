@@ -1,0 +1,189 @@
+Solar System
+
+The Solar System is the gravitationally bound system comprising the Sun and the objects that orbit it, either directly or indirectly. Of those objects that orbit the Sun directly, the largest eight are the planets, with the remainder being significantly smaller objects, such as dwarf planets and small Solar System bodies. Of the objects that orbit the Sun indirectly, the moons, two are larger than the smallest planet, Mercury.
+The Solar System formed 4.6 billion years ago from the gravitational collapse of a giant interstellar molecular cloud. The vast majority of the system's mass is in the Sun, with the majority of the remaining mass contained in Jupiter. The four smaller inner planets, Mercury, Venus, Earth and Mars, are terrestrial planets, being primarily composed of rock and metal. The four outer planets are giant planets, being substantially more massive than the terrestrials. The two largest, Jupiter and Saturn, are gas giants, being composed mainly of hydrogen and helium; the two outermost planets, Uranus and Neptune, are ice giants, being composed mostly of substances with relatively high melting points compared with hydrogen and helium, called volatiles, such as water, ammonia and methane. All eight planets have almost circular orbits that lie within a nearly flat disc called the ecliptic.
+The Solar System also contains smaller objects. The asteroid belt, which lies between the orbits of Mars and Jupiter, mostly contains objects composed, like the terrestrial planets, of rock and metal. Beyond Neptune's orbit lie the Kuiper belt and scattered disc, which are populations of trans-Neptunian objects composed mostly of ices, and beyond them a newly discovered population of sednoids. Within these populations are several dozen to possibly tens of thousands of objects large enough that they have been rounded by their own gravity. Such objects are categorized as dwarf planets. Identified dwarf planets include the asteroid Ceres and the trans-Neptunian objects Pluto and Eris. In addition to these two regions, various other small-body populations, including comets, centaurs and interplanetary dust clouds, freely travel between regions. Six of the planets, at least four of the dwarf planets, and many of the smaller bodies are orbited by natural satellites, usually termed "moons" after the Moon. Each of the outer planets is encircled by planetary rings of dust and other small objects.
+The solar wind, a stream of charged particles flowing outwards from the Sun, creates a bubble-like region in the interstellar medium known as the heliosphere. The heliopause is the point at which pressure from the solar wind is equal to the opposing pressure of the interstellar medium; it extends out to the edge of the scattered disc. The Oort cloud, which is thought to be the source for long-period comets, may also exist at a distance roughly a thousand times further than the heliosphere. The Solar System is located in the Orion Arm, 26,000 light-years from the center of the Milky Way.Photovoltaic system
+
+A photovoltaic system, also PV system or solar power system, is a power system designed to supply usable solar power by means of photovoltaics. It consists of an arrangement of several components, including solar panels to absorb and convert sunlight into electricity, a solar inverter to change the electric current from DC to AC, as well as mounting, cabling and other electrical accessories to set up a working system. It may also use a solar tracking system to improve the system's overall performance and include an integrated battery solution, as prices for storage devices are expected to decline. Strictly speaking, a solar array only encompasses the ensemble of solar panels, the visible part of the PV system, and does not include all the other hardware, often summarized as balance of system (BOS). Moreover, PV systems convert light directly into electricity and shouldn't be confused with other technologies, such as concentrated solar power or solar thermal, used for heating and cooling.
+PV systems range from small, rooftop-mounted or building-integrated systems with capacities from a few to several tens of kilowatts, to large utility-scale power stations of hundreds of megawatts. Nowadays, most PV systems are grid-connected, while off-grid or stand-alone systems only account for a small portion of the market.
+Operating silently and without any moving parts or environmental emissions, PV systems have developed from being niche market applications into a mature technology used for mainstream electricity generation. A rooftop system recoups the invested energy for its manufacturing and installation within 0.7 to 2 years and produces about 95 percent of net clean renewable energy over a 30-year service lifetime.
+Due to the exponential growth of photovoltaics, prices for PV systems have rapidly declined in recent years. However, they vary by market and the size of the system. In 2014, prices for residential 5-kilowatt systems in the United States were around $3.29 per watt, while in the highly penetrated German market, prices for rooftop systems of up to 100 kW declined to €1.24 per watt. Nowadays, solar PV modules account for less than half of the system's overall cost, leaving the rest to the remaining BOS-components and to soft costs, which include customer acquisition, permitting, inspection and interconnection, installation labor and financing costs.List of Solar System objects by size
+
+This is a partial list of Solar System objects by size, arranged in descending order of mean volumetric radius, and subdivided into several size classes. These lists can also be sorted according to an object's mass and, for the largest objects, volume, density and surface gravity, insofar as these values are available. This list contains the Sun, the planets, dwarf planets, many of the larger small Solar System bodies (which includes the asteroids), all named natural satellites, and a number of smaller objects of historical or scientific interest, such as comets and near-Earth objects.
+The ordering may be different depending on whether one chooses radius or mass, because some objects are denser than others. For instance, Uranus is larger than Neptune but less massive, and although Ganymede and Titan are larger than Mercury, they have less than half Mercury's mass. This means some objects in the lower tables, despite their smaller radii, may be more massive than objects in the upper tables because they have a higher density.
+Many trans-Neptunian objects (TNOs) have been discovered, and their approximate locations in this list are shown, even though there can be a large uncertainty in their measurement.
+Solar System objects more massive than 1021 kilograms (one yottagram [Yg]) are known or expected to be approximately spherical. Astronomical bodies relax into rounded shapes (ellipsoids), achieving hydrostatic equilibrium, when the gravity of their mass is sufficient to overcome the structural strength of their material. Objects made of ice become round more easily than those made of rock, and many icy objects are spheroidal at far lower sizes. The cutoff boundary for roundness is somewhere between 100 km and 200 km in radius.
+The larger objects in the mass range between 1018 kg to 1021 kg (1 to 1000 zettagrams [Zg]), such as Tethys, Ceres, and Mimas, have relaxed to an oblate-spheroid equilibrium due to their gravity, whereas the less massive rubble piles (e.g. Amalthea and Janus) are roughly rounded, but not spherical, dubbed "irregular".
+Spheroidal bodies typically have some polar flattening due to the centrifugal force from their rotation, and can sometimes even have quite different equatorial diameters (scalene ellipsoids such as Haumea). Unlike bodies such as Haumea, the irregular bodies deviate significantly from the shape of an ellipsoid.
+There can be difficulty in determining the diameter (within a factor of about 2) for typical objects beyond Saturn. (See 2060 Chiron as an example.) For TNOs there is some confidence in the diameters, but for non-binary TNOs there is no real confidence in the masses/densities. Many TNOs are often just assumed to have Pluto's density of 2.0 g/cm3, but it is just as likely that they have a comet-like density of only 0.5 g/cm3. For example, if a TNO is poorly assumed to have a mass of 3.59×1020 kg based on a radius of 350 km with a density of 2 g/cm3 and is later discovered to only have a radius of 175 km with a density of 1 g/cm3, the mass estimate would be only 2.24×1019 kg.
+The sizes and masses of many of the moons of Jupiter and Saturn are fairly well known due to numerous observations and interactions of the Galileo and Cassini orbiters. But many of the moons with a radius less than ~100 km, such as Jupiter's Himalia, still have unknown masses. Again, as we get further from the Sun than Saturn, things get less clear. There has not yet been an orbiter around Uranus or Neptune for long-term study of their moons. For the small outer irregular moons of Uranus, such as Sycorax, which were not discovered by the Voyager 2 flyby, even different NASA web pages, such as the National Space Science Data Center and JPL Solar System Dynamics, have somewhat contradictory size and albedo estimates depending on which research paper is being cited.
+Data for objects has varying reliability including uncertainties in the figures for mass and radius, and irregularities in the shape and density, with accuracy often depending on how close it is to Earth or whether it has been visited by a probe.List of Solar System objects
+
+The following is a list of Solar System objects by orbit, ordered by increasing distance from the Sun. Most named objects in this list have a diameter of 500 km or more.
+The Sun, a spectral class G2V main-sequence star
+The inner Solar System and the terrestrial planets
+Mercury
+Mercury-crosser asteroids
+
+Venus
+Venus-crosser asteroids
+2002 VE68, Venus's quasi-satellite
+
+Earth
+Moon
+Near-Earth asteroids (including 99942 Apophis)
+Earth trojan (2010 TK7)
+Earth-crosser asteroids
+Earth's quasi-satellites
+
+Mars
+Deimos
+Phobos
+Mars trojans
+Mars-crosser asteroids
+
+Asteroids in the asteroid belt, between the orbits of Mars and Jupiter
+Ceres, a dwarf planet
+Pallas
+Vesta
+Hygiea
+Asteroids number in the hundreds of thousands. For longer lists, see list of notable asteroids, list of asteroids, or list of objects by mass.
+Asteroid moons
+
+A number of smaller groups distinct from the asteroid belt
+
+The outer Solar System with the giant planets, their satellites, trojan asteroids and some minor planets
+Jupiter
+Rings of Jupiter
+Complete list of Jupiter's natural satellites
+Io
+Europa
+Ganymede
+Callisto
+
+Jupiter trojans
+Jupiter-crossing minor planets
+
+Saturn
+Rings of Saturn
+Complete list of Saturn's natural satellites
+Mimas
+Enceladus
+Tethys (trojans: Telesto and Calypso)
+Dione (trojans: Helene and Polydeuces)
+Rhea
+Rings of Rhea
+
+Titan
+Hyperion
+Iapetus
+Phoebe
+
+Saturn-crossing minor planets
+
+Uranus
+Rings of Uranus
+Complete list of Uranus's natural satellites
+Miranda
+Ariel
+Umbriel
+Titania
+Oberon
+
+Uranus trojan (2011 QF99)
+Uranus-crossing minor planets
+
+Neptune
+Rings of Neptune
+Complete list of Neptune's natural satellites
+Proteus
+Triton
+Nereid
+
+Neptune trojans
+Neptune-crossing minor planets
+
+Non-trojan minor planets
+Centaurs
+Damocloids
+
+Trans-Neptunian objects (beyond the orbit of Neptune)
+Kuiper-belt objects (KBOs)
+Plutinos
+Pluto, a dwarf planet
+Complete list of Pluto's natural satellites
+Charon
+
+90482 Orcus
+Vanth
+
+Twotinos
+Cubewanos (classical objects)
+Haumea, a dwarf planet
+Namaka
+Hi'iaka
+
+50000 Quaoar
+Weywot
+
+120347 Salacia
+20000 Varuna
+Makemake, a dwarf planet
+
+Scattered-disc objects
+Eris, a dwarf planet
+Dysnomia
+
+(225088) 2007 OR10
+(84522) 2002 TC302
+(87269) 2000 OO67
+
+Detached objects
+2004 XR190
+90377 Sedna (possibly inner Oort cloud)
+2012 VP113 (possibly inner Oort cloud)
+
+Oort cloud (hypothetical)
+Hills cloud/inner Oort cloud
+Outer Oort cloud
+
+The Solar System also contains:
+Comets (icy bodies with eccentric orbits)
+List of periodic comets
+List of non-periodic comets
+
+Small objects, including:
+Meteoroids
+Interplanetary dust
+Helium focusing cone, around the Sun
+
+Human-made objects orbiting the Sun, Mercury, Venus, Earth, Mars, and Saturn, including active artificial satellites and space junk
+
+Heliosphere, a bubble in space produced by the solar wind
+Heliosheath
+Heliopause
+Hydrogen wall, a pile up of hydrogen from the interstellar mediumFormation and evolution of the Solar System
+
+The formation and evolution of the Solar System began 4.6 billion years ago with the gravitational collapse of a small part of a giant molecular cloud. Most of the collapsing mass collected in the center, forming the Sun, while the rest flattened into a protoplanetary disk out of which the planets, moons, asteroids, and other small Solar System bodies formed.
+This model, known as the nebular hypothesis, was first developed in the 18th century by Emanuel Swedenborg, Immanuel Kant, and Pierre-Simon Laplace. Its subsequent development has interwoven a variety of scientific disciplines including astronomy, physics, geology, and planetary science. Since the dawn of the space age in the 1950s and the discovery of extrasolar planets in the 1990s, the model has been both challenged and refined to account for new observations.
+The Solar System has evolved considerably since its initial formation. Many moons have formed from circling discs of gas and dust around their parent planets, while other moons are thought to have formed independently and later been captured by their planets. Still others, such as Earth's Moon, may be the result of giant collisions. Collisions between bodies have occurred continually up to the present day and have been central to the evolution of the Solar System. The positions of the planets often shifted due to gravitational interactions. This planetary migration is now thought to have been responsible for much of the Solar System's early evolution.
+In roughly 5 billion years, the Sun will cool and expand outward to many times its current diameter (becoming a red giant), before casting off its outer layers as a planetary nebula and leaving behind a stellar remnant known as a white dwarf. In the far distant future, the gravity of passing stars will gradually reduce the Sun's retinue of planets. Some planets will be destroyed, others ejected into interstellar space. Ultimately, over the course of tens of billions of years, it is likely that the Sun will be left with none of the original bodies in orbit around it.List of gravitationally rounded objects of the Solar System
+
+Gravitationally rounded objects in the Solar System have a rounded, ellipsoidal shape due to the forces of their own gravity (hydrostatic equilibrium) and their sizes range from dwarf planets and moons to the planets and the sun. This list does not include any small Solar System bodies, but it does include a sample of planetary-mass objects whose shape has yet to be accurately determined. The Sun's orbital characteristics are listed in relation to the Galactic Center, while all other objects are listed in order of their distance from the Sun.Small Solar System body
+
+A Small Solar System Body (SSSB) is an object in the Solar System that is neither a planet, nor a dwarf planet, nor a natural satellite. The term was first defined in 2006 by the International Astronomical Union.
+
+All other objects, except satellites, orbiting the Sun shall be referred to collectively as "Small Solar System Bodies" ... These currently include most of the Solar System asteroids, most Trans-Neptunian Objects (TNOs), comets, and other small bodies.
+
+This encompasses all comets and all minor planets other than those that are dwarf planets. Thus SSSBs are: the classical asteroids with the exception of the dwarf planet Ceres; the trojans; and the centaurs and trans-Neptunian objects with the exception of Pluto, Haumea, Makemake, Eris, and others that may turn out to be dwarf planets.Passive solar building design
+
+In passive solar building design, windows, walls, and floors are made to collect, store, and distribute solar energy in the form of heat in the winter and reject solar heat in the summer. This is called passive solar design because, unlike active solar heating systems, it does not involve the use of mechanical and electrical devices.
+The key to design a passive solar building is to best take advantage of the local climate performing an accurate site analysis. Elements to be considered include window placement and size, and glazing type, thermal insulation, thermal mass, and shading. Passive solar design techniques can be applied most easily to new buildings, but existing buildings can be adapted or "retrofitted".Solar power
+
+Solar power is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV), indirectly using concentrated solar power, or a combination. Concentrated solar power systems use lenses or mirrors and tracking systems to focus a large area of sunlight into a small beam. Photovoltaic cells convert light into an electric current using the photovoltaic effect.
+Photovoltaics were initially solely used as a source of electricity for small and medium-sized applications, from the calculator powered by a single solar cell to remote homes powered by an off-grid rooftop PV system. Commercial concentrated solar power plants were first developed in the 1980s. The 392 MW Ivanpah installation is the largest concentrating solar power plant in the world, located in the Mojave Desert of California.
+As the cost of solar electricity has fallen, the number of grid-connected solar PV systems has grown into the millions and utility-scale solar power stations with hundreds of megawatts are being built. Solar PV is rapidly becoming an inexpensive, low-carbon technology to harness renewable energy from the Sun. The current largest photovoltaic power station in the world is the 850 MW Longyangxia Dam Solar Park, in Qinghai, China.
+The International Energy Agency projected in 2014 that under its "high renewables" scenario, by 2050, solar photovoltaics and concentrated solar power would contribute about 16 and 11 percent, respectively, of the worldwide electricity consumption, and solar would be the world's largest source of electricity. Most solar installations would be in China and India. Currently, as of 2016, solar power provides just 1% of total worldwide electricity production but growing 33% per annum.List of tallest mountains in the Solar System
+
+This is a list of the tallest mountains in the Solar System. The tallest peak or peaks on worlds where significant mountains have been measured are given; in some cases, the tallest peaks of different classes on a world are also listed. At 21.9 km, the enormous shield volcano Olympus Mons on Mars is the tallest mountain on any planet. For 40 years, following its discovery in 1971, it was the tallest mountain known in the Solar System. However, in 2011, the central peak of the crater Rheasilvia on the asteroid and protoplanet Vesta was found to be of comparable height.

@@ -1,0 +1,180 @@
+Data mining is the computing process of discovering patterns in large data sets involving methods at the intersection of machine learning, statistics, and database systems.
+An essential process where intelligent methods are applied to extract data patterns.
+It is an interdisciplinary subfield of computer science.
+The overall goal of the data mining process is to extract information from a data set and transform it into an understandable structure for further use.
+Aside from the raw analysis step, it involves database and data management aspects, data pre-processing, model and inference considerations, interestingness metrics, complexity considerations, post-processing of discovered structures, visualization, and online updating.
+Data mining is the analysis step of the "knowledge discovery in databases" process, or KDD.
+The term is a misnomer, because the goal is the extraction of patterns and knowledge from large amounts of data, not the extraction (mining) of data itself.
+It also is a buzzword and is frequently applied to any form of large-scale data or information processing (collection, extraction, warehousing, analysis, and statistics) as well as any application of computer decision support system, including artificial intelligence, machine learning, and business intelligence.
+The book Data mining: Practical machine learning tools and techniques with Java (which covers mostly machine learning material) was originally to be named just Practical machine learning, and the term data mining was only added for marketing reasons.
+Often the more general terms (large scale) data analysis and analytics  or, when referring to actual methods, artificial intelligence and machine learning  are more appropriate.
+The actual data mining task is the semi-automatic or automatic analysis of large quantities of data to extract previously unknown, interesting patterns such as groups of data records (cluster analysis), unusual records (anomaly detection), and dependencies (association rule mining, sequential pattern mining).
+This usually involves using database techniques such as spatial indices.
+These patterns can then be seen as a kind of summary of the input data, and may be used in further analysis or, for example, in machine learning and predictive analytics.
+For example, the data mining step might identify multiple groups in the data, which can then be used to obtain more accurate prediction results by a decision support system.
+Neither the data collection, data preparation, nor result interpretation and reporting is part of the data mining step, but do belong to the overall KDD process as additional steps.
+The related terms data dredging, data fishing, and data snooping refer to the use of data mining methods to sample parts of a larger population data set that are (or may be) too small for reliable statistical inferences to be made about the validity of any patterns discovered.
+These methods can, however, be used in creating new hypotheses to test against the larger data populations.Competitive intelligence (CI) is the action of defining, gathering, analyzing, and distributing intelligence about products, customers, competitors, and any aspect of the environment needed to support executives and managers in strategic decision making for an organization.
+CI means understanding and learning what is happening in the world outside the business to increase one's competitivity.
+It means learning as much as possible, as soon as possible, about one's external environment including one's industry in general and relevant competitors.
+Key points:
+Competitive intelligence is an ethical and legal business practice, as opposed to industrial espionage, which is illegal.
+The focus is on the external business environment.
+There is a process involved in gathering information, converting it into intelligence and then using it in decision making.
+Some CI professionals erroneously emphasise that if the intelligence gathered is not usable or actionable, it is not intelligence.
+Another definition of CI regards it as the organizational function responsible for the early identification of risks and opportunities in the market before they become obvious ("early signal analysis").
+This definition focuses attention on the difference between dissemination of widely available factual information (such as market statistics, financial reports, newspaper clippings) performed by functions such as libraries and information centers, and competitive intelligence which is a perspective on developments and events aimed at yielding a competitive edge.
+The term CI is often viewed as synonymous with competitor analysis, but competitive intelligence is more than analyzing competitors; it embraces the entire environment and stakeholders: customers, competitors, distributors, technologies, and macroeconomic data.National security is a concept that a government, along with its parliaments, should protect the state and its citizens against all kind of "national" crises through a variety of power projections, such as political power, diplomacy, economic power, military might, and so on.
+The concept developed all in the United States after World War II.
+Initially focusing on military might, it now encompasses a broad range of facets, all of which impinge on the non-military or economic security of the nation and the values espoused by the national society.
+Accordingly, in order to possess national security, a nation needs to possess economic security, energy security, environmental security, etc.
+Security threats involve not only conventional foes such as other nation-states but also non-state actors such as violent non-state actors, narcotic cartels, multinational corporations and non-governmental organisations; some authorities include natural disasters and events causing severe environmental damage in this category.
+Measures taken to ensure national security include:
+using diplomacy to rally allies and isolate threats
+marshalling economic power to facilitate or compel cooperation
+maintaining effective armed forces
+implementing civil defense and emergency preparedness measures (including anti-terrorism legislation)
+ensuring the resilience and redundancy of critical infrastructure
+using intelligence services to detect and defeat or avoid threats and espionage, and to protect classified information
+using counterintelligence services or secret police to protect the nation from internal threats
+There is no single universally accepted definition of national security.
+The variety of definitions provide an overview of the many usages of this concept.
+The concept still remains ambiguous, having originated from simpler definitions which initially emphasised the freedom from military threat and political coercion to later increase in sophistication and include other forms of non-military security as suited the circumstances of the time.
+A typical dictionary definition, in this case from the Macmillan Dictionary (online version), defines the term as "the protection or the safety of a countrys secrets and its citizens" emphasising the overall security of a nation and a nation state.
+Walter Lippmann, in 1943, defined it in terms of war saying that "a nation has security when it does not have to sacrifice its legitimate nterests to avoid war, and is able, if challenged, to maintain them by war".
+A later definition by Harold Lasswell, a political scientist, in 1950, looks at national security from almost the same aspect, that of external coercion: "The distinctive meaning of national security means freedom from foreign dictation."
+In 1960, Arnold Wolfers, while recognising the need to segregate the subjectivity of the conceptual idea from the objectivity, talks of threats to acquired values: "An ambiguous symbol meaning different things to different people.
+National security objectively means the absence of threats to acquired values and subjectively, the absence of fear that such values will be attacked." The 1996 definition propagated by the National Defence College of India accretes the elements of national power: "National security is an appropriate and aggressive blend of political resilience and maturity, human resources, economic structure and capacity, technological competence, industrial base and availability of natural resources and finally the military might."
+Harold Brown, U.S.
+Secretary of Defense from 1977 to 1981 in the Carter administration, enlarged the definition of national security by including elements such as economic and environmental security:
+
+National security then is the ability to preserve the nation's physical integrity and territory; to maintain its economic relations with the rest of the world on reasonable terms; to preserve its nature, institution, and governance from disruption from outside; and to control its borders.
+
+In 1990, Harvard University history professor Charles Maier defined national security through the lens of national power: "National security...
+is best described as a capacity to control those domestic and foreign conditions that the public opinion of a given community believes necessary to enjoy its own self-determination or autonomy, prosperity and wellbeing." According to Prabhakaran Paleri, author of National Security, Imperatives and Challenges, national security may be defined as:
+
+The measurable state of the capability of a nation to overcome the multi-dimensional threats to the apparent well-being of its people and its survival as a nation-state at any given time, by balancing all instruments of state policy through governance, that can be indexed by computation, empirically or otherwise, and is extendable to global security by variables external to it.
+
+A concise working definition by Premaratne that paraphrases the aspects of the definitions of Brown, Romm and Paleri defines national security as
+
+Safeguarding the sovereignty, territorial integrity, citizenry and socioeconomic functionality of a nation from an aggressor intent on undermining a particular valued aspect of a nation through violent or unjust meansHarvard University is a private Ivy League research university in Cambridge, Massachusetts, established in 1636, whose history, influence, and wealth have made it one of the world's most prestigious universities.
+Established originally by the Massachusetts legislature and soon thereafter named for John Harvard (its first benefactor), Harvard is the United States' oldest institution of higher learning, and the Harvard Corporation (formally, the President and Fellows of Harvard College) is its first chartered corporation.
+Although never formally affiliated with any denomination, the early College primarily trained Congregational and Unitarian clergy.
+Its curriculum and student body were gradually secularized during the 18th century, and by the 19th century Harvard had emerged as the central cultural establishment among Boston elites.
+Following the American Civil War, President Charles W.
+Eliot's long tenure (18691909) transformed the college and affiliated professional schools into a modern research university; Harvard was a founding member of the Association of American Universities in 1900.
+James Bryant Conant led the university through the Great Depression and World War II and began to reform the curriculum and liberalize admissions after the war.
+The undergraduate college became coeducational after its 1977 merger with Radcliffe College.
+The university is organized into eleven separate academic unitsten faculties and the Radcliffe Institute for Advanced Studywith campuses throughout the Boston metropolitan area: its 209-acre (85 ha) main campus is centered on Harvard Yard in Cambridge, approximately 3 miles (5 km) northwest of Boston; the business school and athletics facilities, including Harvard Stadium, are located across the Charles River in the Allston neighborhood of Boston and the medical, dental, and public health schools are in the Longwood Medical Area.
+Harvard's $34.5 billion financial endowment is the largest of any academic institution.
+Harvard is a large, highly residential research university.
+The nominal cost of attendance is high, but the university's large endowment allows it to offer generous financial aid packages.
+It operates several arts, cultural, and scientific museums, alongside the Harvard Library, which is the world's largest academic and private library system, comprising 79 individual libraries with over 18 million volumes.
+Harvard's alumni include eight U.S.
+presidents, several foreign heads of state, 62 living billionaires, 359 Rhodes Scholars, and 242 Marshall Scholars.
+To date, some 130 Nobel laureates, 18 Fields Medalists, and 13 Turing Award winners have been affiliated as students, faculty, or staff.Python is a widely used high-level programming language for general-purpose programming, created by Guido van Rossum and first released in 1991.
+An interpreted language, Python has a design philosophy that emphasizes code readability (notably using whitespace indentation to delimit code blocks rather than curly brackets or keywords), and a syntax that allows programmers to express concepts in fewer lines of code than might be used in languages such as C++ or Java.
+The language provides constructs intended to enable writing clear programs on both a small and large scale.
+Python features a dynamic type system and automatic memory management and supports multiple programming paradigms, including object-oriented, imperative, functional programming, and procedural styles.
+It has a large and comprehensive standard library.
+Python interpreters are available for many operating systems, allowing Python code to run on a wide variety of systems.
+CPython, the reference implementation of Python, is open source software and has a community-based development model, as do nearly all of its variant implementations.
+CPython is managed by the non-profit Python Software Foundation.In object-oriented programming, inheritance is when an object or class is based on another object (prototypal inheritance) or class (class-based inheritance), using the same implementation.
+Inheritance in most class-based object oriented languages is a mechanism in which one object acquires all the properties and behaviors of parent object.
+The idea behind inheritance is that you can create new classes that are built upon existing classes.
+or specifying a new implementation to maintain the same behavior (realizing an interface).
+Such an inherited class is called a subclass of its parent class or super class.
+It is a mechanism for code reuse and to allow independent extensions of the original software via public classes and interfaces.
+The relationships of objects or classes through inheritance give rise to a directed graph.
+Inheritance was invented in 1967 for Simula.
+The term "inheritance" is loosely used for both class-based and prototype-based programming, but in narrow use is reserved for class-based programming (one class inherits from another), with the corresponding technique in prototype-based programming being instead called delegation (one object delegates to another).
+Inheritance should not be confused with subtyping.
+In some languages inheritance and subtyping agree, whereas in others they differ; in general, subtyping establishes an is-a relationship, whereas inheritance only reuses implementation and establishes a syntactic relationship, not necessarily a semantic relationship (inheritance does not ensure behavioral subtyping).
+To distinguish these concepts, subtyping is also known as interface inheritance, whereas inheritance as defined here is known as implementation inheritance or code inheritance.
+Still, inheritance is a commonly used mechanism for establishing subtype relationships.
+Inheritance is contrasted with object composition, where one object contains another object (or objects of one class contain objects of another class); see composition over inheritance.
+Composition implements a has-a relationship, in contrast to the is-a relationship of subtyping.In computer science, functional programming is a programming paradigma style of building the structure and elements of computer programsthat treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
+It is a declarative programming paradigm, which means programming is done with expressions or declarations instead of statements.
+In functional code, the output value of a function depends only on the arguments that are passed to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time; this is in contrast to procedures depending on a local or global state, which may produce different results at different times when called with the same arguments but a different program state.
+Eliminating side effects, i.e.
+changes in state that do not depend on the function inputs, can make it much easier to understand and predict the behavior of a program, which is one of the key motivations for the development of functional programming.
+Functional programming has its origins in lambda calculus, a formal system developed in the 1930s to investigate computability, the Entscheidungsproblem, function definition, function application, and recursion.
+Many functional programming languages can be viewed as elaborations on the lambda calculus.
+Another well-known declarative programming paradigm, logic programming, is based on relations.
+In contrast, imperative programming changes state with commands in the source code, the simplest example being assignment.
+Imperative programming does have functionsnot in the mathematical sensebut in the sense of subroutines.
+They can have side effects that may change the value of program state.
+Functions without return values therefore make sense.
+Because of this, they lack referential transparency, i.e.
+the same language expression can result in different values at different times depending on the state of the executing program.
+Functional programming languages have largely been emphasized in academia rather than in commercial software development.
+However, prominent programming languages which support functional programming such as Common Lisp, Scheme, Clojure, Wolfram Language (also known as Mathematica), Racket, Erlang, OCaml, Haskell, and F# have been used in industrial and commercial applications by a wide variety of organizations.
+JavaScript, one of the world's most widely distributed languages, has the properties of an untyped functional language, as well as imperative and object-oriented paradigms.
+Functional programming is also supported in some domain-specific programming languages like R (statistics), J, K and Q from Kx Systems (financial analysis), XQuery/XSLT (XML), and Opal.
+Widespread domain-specific declarative languages like SQL and Lex/Yacc use some elements of functional programming, especially in eschewing mutable values.
+Programming in a functional style can also be accomplished in languages that are not specifically designed for functional programming.
+For example, the imperative Perl programming language has been the subject of a book describing how to apply functional programming concepts.
+This is also true of the PHP programming language.
+C++11, Java 8, and C# 3.0 all added constructs to facilitate the functional style.
+The Julia language also offers functional programming abilities.
+An interesting case is that of Scala  it is frequently written in a functional style, but the presence of side effects and mutable state place it in a grey area between imperative and functional languages.Logic programming is a type of programming paradigm which is largely based on formal logic.
+Any program written in a logic programming language is a set of sentences in logical form, expressing facts and rules about some problem domain.
+Major logic programming language families include Prolog, Answer set programming (ASP) and Datalog.
+In all of these languages, rules are written in the form of clauses:
+H :- B1, , Bn.
+and are read declaratively as logical implications:
+H if B1 and  and Bn.
+H is called the head of the rule and B1, , Bn is called the body.
+Facts are rules that have no body, and are written in the simplified form:
+H.
+In the simplest case in which H, B1, , Bn are all atomic formulae, these clauses are called definite clauses or Horn clauses.
+However, there exist many extensions of this simple case, the most important one being the case in which conditions in the body of a clause can also be negations of atomic formulae.
+Logic programming languages that include this extension have the knowledge representation capabilities of a non-monotonic logic.
+In ASP and Datalog, logic programs have only a declarative reading, and their execution is performed by means of a proof procedure or model generator whose behaviour is not meant to be under the control of the programmer.
+However, in the Prolog family of languages, logic programs also have a procedural interpretation as goal-reduction procedures:
+to solve H, solve B1, and ...
+and solve Bn.
+Consider, for example, the following clause:
+fallible(X) :- human(X).
+based on an example used by Terry Winograd to illustrate the programming language Planner.
+As a clause in a logic program, it can be used both as a procedure to test whether X is fallible by testing whether X is human, and as a procedure to find an X that is fallible by finding an X that is human.
+Even facts have a procedural interpretation.
+For example, the clause:
+human(socrates).
+can be used both as a procedure to show that socrates is human, and as a procedure to find an X that is human by "assigning" socrates to X.
+The declarative reading of logic programs can be used by a programmer to verify their correctness.
+Moreover, logic-based program transformation techniques can also be used to transform logic programs into logically equivalent programs that are more efficient.
+In the Prolog family of logic programming languages, the programmer can also use the known problem-solving behaviour of the execution mechanism to improve the efficiency of programs.A Turing machine is a mathematical model of computation that defines an abstract machine which manipulates symbols on a strip of tape according to a table of rules.
+Despite the model's simplicity, given any computer algorithm, a Turing machine can be constructed that is capable of simulating that algorithm's logic.
+The machine operates on an infinite memory tape divided into discrete cells.
+The machine positions its head over a cell and "reads" (scans) the symbol there.
+Then, as per the symbol and its present place in a finite table of user-specified instructions, the machine (i) writes a symbol (e.g.
+a digit or a letter from a finite alphabet) in the cell (some models allowing symbol erasure or no writing), then (ii) either moves the tape one cell left or right (some models allow no motion, some models move the head), then (iii) (as determined by the observed symbol and the machine's place in the table) either proceeds to a subsequent instruction or halts the computation.
+The Turing machine was invented in 1936 by Alan Turing, who called it an a-machine (automatic machine).
+With this model, Turing was able to answer two questions in the negative: (1) Does a machine exist that can determine whether any arbitrary machine on its tape is "circular" (e.g.
+freezes, or fails to continue its computational task); similarly, (2) does a machine exist that can determine whether any arbitrary machine on its tape ever prints a given symbol.
+Thus by providing a mathematical description of a very simple device capable of arbitrary computations, he was able to prove properties of computation in generaland in particular, the uncomputability of the Entscheidungsproblem ("decision problem").
+Thus, Turing machines prove fundamental limitations on the power of mechanical computation.
+While they can express arbitrary computations, their minimalistic design makes them unsuitable for computation in practice: real-world computers are based on different designs that, unlike Turing machines, use random-access memory.
+Turing completeness is the ability for a system of instructions to simulate a Turing machine.
+A programming language that is Turing complete is theoretically capable of expressing all tasks accomplishable by computers; nearly all programming languages are Turing complete if the limitations of finite memory are ignored.DNA nanotechnology is the design and manufacture of artificial nucleic acid structures for technological uses.
+In this field, nucleic acids are used as non-biological engineering materials for nanotechnology rather than as the carriers of genetic information in living cells.
+Researchers in the field have created static structures such as two- and three-dimensional crystal lattices, nanotubes, polyhedra, and arbitrary shapes, and functional devices such as molecular machines and DNA computers.
+The field is beginning to be used as a tool to solve basic science problems in structural biology and biophysics, including applications in X-ray crystallography and nuclear magnetic resonance spectroscopy of proteins to determine structures.
+Potential applications in molecular scale electronics and nanomedicine are also being investigated.
+The conceptual foundation for DNA nanotechnology was first laid out by Nadrian Seeman in the early 1980s, and the field began to attract widespread interest in the mid-2000s.
+This use of nucleic acids is enabled by their strict base pairing rules, which cause only portions of strands with complementary base sequences to bind together to form strong, rigid double helix structures.
+This allows for the rational design of base sequences that will selectively assemble to form complex target structures with precisely controlled nanoscale features.
+Several assembly methods are used to make these structures, including tile-based structures that assemble from smaller structures, folding structures using the DNA origami method, and dynamically reconfigurable structures using strand displacement methods.
+The field's name specifically references DNA, but the same principles have been used with other types of nucleic acids as well, leading to the occasional use of the alternative name nucleic acid nanotechnology.In computer science and computer programming, a data type or simply type is a classification of data which tells the compiler or interpreter how the programmer intends to use the data.
+Most programming languages support various types of data, for example: real, integer or Boolean.
+A data type provides a set of values from which an expression (i.e.
+variable, function ...) may take its values.
+The type defines the operations that can be done on the data, the meaning of the data, and the way values of that type can be stored.
+
+In computer science and computer programming, a data type or simply type is a classification of data which tells the compiler or interpreter how the programmer intends to use the data.
+Most programming languages support various types of data, for example: real, integer or Boolean.
+A data type provides a set of values from which an expression (i.e.
+variable, function ...) may take its values.
+The type defines the operations that can be done on the data, the meaning of the data, and the way values of that type can be stored.
+

@@ -1,0 +1,7 @@
+"""
+This script creates a pyEphem observer and a satellite object, computes the altitude and azimuth
+of the satellite as seen from the observer, and then plots the results. If you find the
+datetime.datetime stuff confusing, I highly recommend Salty Crane’s cheat sheet.
+After the script has run, you should see this polar plot of the satellite’s trajectory:
+Finally, here’s a simple function to read in a text file filled with TLE data:
+"""

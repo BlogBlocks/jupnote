@@ -1,0 +1,45 @@
+SQLite
+
+SQLite ( or ) is a relational database management system contained in a C programming library. In contrast to many other database management systems, SQLite is not a client–server database engine. Rather, it is embedded into the end program.
+SQLite is ACID-compliant and implements most of the SQL standard, using a dynamically and weakly typed SQL syntax that does not guarantee the domain integrity.
+SQLite is a popular choice as embedded database software for local/client storage in application software such as web browsers. It is arguably the most widely deployed database engine, as it is used today by several widespread browsers, operating systems, and embedded systems (such as mobile phones), among others. SQLite has bindings to many programming languages.SQLite Workbench
+
+SQLite Workbench is a free online GUI to create, edit and manage SQLite databases. It also allows exporting data or accessing it through a remote REST API call, giving a full cloud database based on SQLite.Data control language
+
+Data Control Language (DCL).
+A data control language (DCL) is a syntax similar to a computer programming language used to control access to data stored in a database (Authorization). In particular, it is a component of Structured Query Language (SQL).
+Examples of DCL commands include:
+GRANT to allow specified users to perform specified tasks.
+REVOKE to cancel previously granted or denied permissions.
+The operations for which privileges may be granted to or revoked from a user or role apply to both the Data definition language (DDL) and the Data manipulation language (DML), and may include CONNECT, SELECT, INSERT, UPDATE, DELETE, EXECUTE, and USAGE.
+In the Oracle database, executing a DCL command issues an implicit commit. Hence you cannot roll back the command.
+In PostgreSQL, executing DCL is transactional, and can be rolled back.
+SQLite does not have any DCL commands as it does not have usernames or logins. Instead, SQLite depends on file system permissions to define who can open and access a database.D. Richard Hipp
+
+Dwayne Richard Hipp (born April 9, 1961) is the architect and primary author of SQLite as well as the Fossil SCM. He also authored the Lemon Parser Generator and CVSTrac. CVSTrac became the inspiration for Trac. He was also a member of the Tcl core team.PhpLiteAdmin
+
+phpLiteAdmin is an open source tool written in PHP intended to handle the administration of SQLite over the World Wide Web. Its feature set, interface, and overall user experience is comparable to that of phpMyAdmin for MySQL. In the same way that SQLite is a flat file database, phpLiteAdmin is distributed in the form of a single PHP file (currently approx. 200 KiB in size). Its ease of installation, portability, and small size go hand in hand with SQLite.SpatiaLite
+
+SpatiaLite is a spatial extension to SQLite, providing vector geodatabase functionality. It is similar to PostGIS, Oracle Spatial, and SQL Server with spatial extensions, although SQLite/SpatiaLite aren't based on client-server architecture: they adopt a simpler personal architecture. i.e. the whole SQL engine is directly embedded within the application itself: a complete database simply is an ordinary file which can be freely copied (or even deleted) and transferred from one computer/OS to a different one without any special precaution.
+SpatiaLite extends SQLite's existing spatial support to cover the OGC's SFS specification. It isn't necessary to use SpatiaLite to manage spatial data in SQLite, which has its own implementation of R-tree indexes and geometry types. But SpatiaLite is needed for advanced spatial queries and to support multiple map projections. SpatiaLite is provided natively for Linux and Windows as a software library as well several utilities that incorporate the SpatiaLite library. These utilities include command line tools that extend SQLite's own with spatial macros, a graphical GUI for manipulating Spatialite databases and their data, and a simple desktop GIS tool for browsing data.
+Being a single binary file, SpatiaLite is also being used as a GIS vector format to exchange geospatial data.WxSQLite3
+
+wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database and is specifically designed for use in programs based on the wxWidgets library.
+wxSQLite3 does not try to hide the underlying database, in contrary almost all special features of the current SQLite version 3.18.0 are supported, like for example the creation of user defined scalar or aggregate functions. Since SQLite stores strings in UTF-8 encoding, the wxSQLite3 methods provide automatic conversion between wxStrings and UTF-8 strings. This works best for the Unicode builds of wxWidgets. In ANSI builds the current locale conversion object (wxConvCurrent) is used for conversion to/from UTF-8. Special care has to be taken if external administration tools are used to modify the database contents, since not all of these tools operate in Unicode resp. UTF-8 mode.
+Since version 1.7.0 optional support for key based database encryption (128 bit AES) is also included. Starting with version 1.9.6 of wxSQLite3 the encryption extension is compatible with the SQLite amalgamation source and includes the extension functions module. Support for 256 bit AES encryption has been added in version 1.9.8.
+Since version 3.5.0 the SQLite library is an integrated part of wxSQLite3PhpSQLiteAdmin
+
+phpSQLiteAdmin is a name of two independent web applications, written in PHP, for managing SQLite databases.
+phpSQLiteAdmin is a web-based client which leverages PHP scripting and the SQLite file-database system to provide a simple way for users to create databases, create tables, and query their own data using non-industry-standard SQLite syntax.Web storage
+
+Web storage, sometimes known as DOM storage (Document Object Model storage), provides web application software methods and protocols used for storing data in a web browser. Web storage supports persistent data storage, similar to cookies but with a greatly enhanced capacity and no information stored in the HTTP request header. There are two main web storage types: local storage and session storage, behaving similarly to persistent cookies and session cookies respectively.
+Web storage is being standardized by the World Wide Web Consortium (W3C). It was originally part of the HTML5 specification, but is now in a separate specification. It is supported by Internet Explorer 8, Mozilla-based browsers (e.g., Firefox 2+, officially from 3.5), Safari 4, Google Chrome 4 (session storage is from 5), and Opera 10.50. As of 14 March 2011 Opera and IE9 support the storage events.List of in-memory databases
+
+This article is a list of in-memory database system software.
+Forrester Research created the first in-memory database platform wave in 2015.
+Many DBMS support in-memory-only storage engines, including:
+Altibase
+MySQL
+Adaptive Server Enterprise
+Raima
+solidDB

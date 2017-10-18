@@ -1,0 +1,44 @@
+MySQL
+
+MySQL (officially pronounced as  "My S-Q-L",) is an open-source relational database management system (RDBMS). Its name is a combination of "My", the name of co-founder Michael Widenius's daughter, and "SQL", the abbreviation for Structured Query Language. The MySQL development project has made its source code available under the terms of the GNU General Public License, as well as under a variety of proprietary agreements. MySQL was owned and sponsored by a single for-profit firm, the Swedish company MySQL AB, now owned by Oracle Corporation. For proprietary use, several paid editions are available, and offer additional functionality.
+MySQL is a central component of the LAMP open-source web application software stack (and other "AMP" stacks). LAMP is an acronym for "Linux, Apache, MySQL, Perl/PHP/Python". Applications that use the MySQL database include: TYPO3, MODx, Joomla, WordPress, phpBB, MyBB, and Drupal. MySQL is also used in many high-profile, large-scale websites, including Google (though not for searches), Facebook, Twitter, Flickr, and YouTube.MySQL Cluster
+
+MySQL Cluster is a technology providing shared-nothing clustering and auto-sharding for the MySQL database management system. It is designed to provide high availability and high throughput with low latency, while allowing for near linear scalability. MySQL Cluster is implemented through the NDB or NDBCLUSTER storage engine for MySQL ("NDB" stands for Network Database).MySQLi
+
+The MySQLi Extension (MySQL Improved) is a relational database driver used in the PHP scripting language to provide an interface with MySQL databases.
+There are three main API options when considering connecting to a MySQL database server:
+PHP's MySQL Extension
+PHP's MySQLi Extension
+PHP Data Objects (PDO)
+The PHP code consists of a core, with optional extensions to the core functionality. PHP's MySQL-related extensions, such as the MySQLi extension, and the MySQL extension, are implemented using the PHP extension framework. An extension typically exposes an API to the PHP developer, to allow its facilities to be used programmatically. However, some extensions which use the PHP extension framework do not expose an API to the PHP developer.
+The PDO MySQL driver extension, for example, does not expose an API to the PHP developer, but provides an interface to the PDO layer above it.
+MySQLi is an improved version of the older PHP MySQL driver, offering various benefits.
+The authors of the PHP scripting language recommend using MySQLi when dealing with MySQL server versions 4.1.3 and newer (takes advantage of new functionality).MySQL Workbench
+
+MySQL Workbench is a visual database design tool that integrates SQL development, administration, database design, creation and maintenance into a single integrated development environment for the MySQL database system. It is the successor to DBDesigner 4 from fabFORCE.net, and replaces the previous package of software, MySQL GUI Tools Bundle.MySQL AB
+
+MySQL AB was a Swedish software company founded in 1995. It was acquired by Sun Microsystems in 2008; Sun was in turn acquired by Oracle Corporation in 2010. MySQL AB is the creator of MySQL, a relational database management system, as well as related products such as MySQL Cluster. The company was dually headquartered in Uppsala, Sweden and Cupertino, California with offices in other countries (France (Paris), Germany (Munich), Ireland (Dublin), Italy (Milan); and Japan (Tokyo)). With around 400 employees in 25 countries, MySQL AB was one of the largest open source companies. Around 70% of the employees worked for MySQL from their home offices.
+Together with Linux, Apache, and PHP, the MySQL Server forms one of the building blocks of the LAMP technology stack. The company claimed over 5 million MySQL installations and over 10 million product downloads in 2004.SQL injection
+
+SQL injection is a code injection technique, used to attack data-driven applications, in which nefarious SQL statements are inserted into an entry field for execution (e.g. to dump the database contents to the attacker). SQL injection must exploit a security vulnerability in an application's software, for example, when user input is either incorrectly filtered for string literal escape characters embedded in SQL statements or user input is not strongly typed and unexpectedly executed. SQL injection is mostly known as an attack vector for websites but can be used to attack any type of SQL database.
+SQL injection attacks allow attackers to spoof identity, tamper with existing data, cause repudiation issues such as voiding transactions or changing balances, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server.
+In a 2012 study, it was observed that the average web application received 4 attack campaigns per month, and retailers received twice as many attacks as other industries.//endOutline of MySQL
+
+The following outline is provided as an overview of and topical guide to MySQL:
+MySQL ("My Structured Query Language") – world's second most widely used relational database management system (RDBMS) and most widely used open-source RDBMS. It is named after co-founder Michael Widenius's daughter, My.MySQL Enterprise
+
+MySQL Enterprise is a subscription-based service produced by Oracle Corporation and targeted toward the commercial market. Oracle's official support, training and certification focus on MySQL Enterprise.
+MySQL Enterprise contains
+MySQL Enterprise Server software, a distribution of the MySQL Server
+MySQL Enterprise Monitor
+MySQL Enterprise Backup
+MySQL Enterprise Audit
+MySQL Enterprise Firewall
+MySQL Workbench Standard Edition
+Production Support
+New versions of MySQL Enterprise Server are released monthly as Rapid Updates (MRUs), and quarterly as Service Packs (QSPs).LAMP (software bundle)
+
+LAMP is an archetypal model of web service stacks, named as an acronym of the names of its original four open-source components: the Linux operating system, the Apache HTTP Server, the MySQL relational database management system (RDBMS), and the PHP programming language. The LAMP components are largely interchangeable and not limited to the original selection. As a solution stack, LAMP is suitable for building dynamic web sites and web applications.
+Since its creation, the LAMP model has been adapted to other componentry, though typically consisting of free and open-source software. For example, an equivalent installation on the Microsoft Windows family of operating systems is known as WAMP and an equivalent installation on macOS is known as MAMP.PhpMyAdmin
+
+phpMyAdmin is a free and open source administration tool for MySQL and MariaDB. As a portable web application written primarily in PHP, it has become one of the most popular MySQL administration tools, especially for web hosting services.

@@ -1,0 +1,833 @@
+Astral v14
+Release 14
+Simon Kennedy
+Jul 20, 2017
+Contents
+1
+Example
+3
+2
+Note on Localized Timezones
+5
+3
+License
+7
+4
+Dependencies
+9
+5
+Installation
+11
+6
+Cities
+61 US Cities                                                 
+13
+14
+7
+Thanks
+15
+8
+Contact
+17
+9
+Version History
+91 The astral Module                                          
+19
+21
+Python Module Index
+33
+i
+ii
+Astral v14, Release 14
+Astral is a python module for calculating the times of various aspects of the sun and moon
+It calculates the following
+Dawn The time in the morning when the sun is a specific number of degrees below the horizon
+Sunrise The time in the morning when the top of the sun breaks the horizon (asuming a location with no obscuring
+features)
+Solar Noon The time when the sun is at its highest point
+Solar Midnight The time when the sun is at its lowest point
+Sunset The time in the evening when the sun is about to disappear below the horizon (asuming a location with no
+obscuring features)
+Dusk The time in the evening when the sun is a specific number of degrees below the horizon
+Daylight The time when the sun is up ie between sunrise and sunset
+Night The time between astronomical dusk of one day and astronomical dawn of the next
+Twilight The time between dawn and sunrise or between sunset and dusk
+The Golden Hour The time when the sun is between 4 degrees below the horizon and 6 degrees above
+The Blue Hour The time when the sun is between 6 and 4 degrees below the horizon
+Time At Elevation the time when the sun is at a specific elevation for either a rising or a setting sun
+Solar Azimuth The number of degrees clockwise from North at which the sun can be seen
+Solar Elevation The number of degrees up from the horizon at which the sun can be seen
+Rahukaalam “Rahukaalam or the period of Rahu is a certain amount of time every day that is considered inauspicious
+for any new venture according to Indian Vedic astrology”
+Moon Phase Calculates the phase of the moon for a specified date
+Contents
+1
+Astral v14, Release 14
+2
+Contents
+CHAPTER
+1
+Example
+The following example demonstrates the functionality available in the module:
+>>> import datetime
+>>> from astral import Astral
+>>> city_name = 'London'
+>>> a = Astral()
+>>> asolar_depression = 'civil'
+>>> city = a[city_name]
+>>> print('Information for %s/%s\n' % (city_name, cityregion))
+Information for London/England
+>>> timezone = citytimezone
+>>> print('Timezone: %s' % timezone)
+Timezone: Europe/London
+>>> print('Latitude: %02f; Longitude: %02f\n' % \
+>>>
+(citylatitude, citylongitude))
+Latitude: 5160; Longitude: 008
+>>> sun = citysun(date=datetimedate(2009, 4, 22), local=True)
+>>> print('Dawn:
+%s' % str(sun['dawn']))
+>>> print('Sunrise: %s' % str(sun['sunrise']))
+>>> print('Noon:
+%s' % str(sun['noon']))
+>>> print('Sunset: %s' % str(sun['sunset']))
+>>> print('Dusk:
+%s' % str(sun['dusk']))
+Dawn:
+2009-04-22 05:12:56+01:00
+Sunrise: 2009-04-22 05:49:36+01:00
+Noon:
+2009-04-22 12:58:48+01:00
+Sunset:
+2009-04-22 20:09:07+01:00
+Dusk:
+2009-04-22 20:45:52+01:00
+3
+Astral v14, Release 14
+If the location you want is not in the Astral geocoder then you need to construct a Location and fill in the values
+either with a tuple on initialization:
+l = Location(('name', 'region',
+01, 12, 'timezone/name', 0))
+lsun()
+or set the attributes after initialization:
+l = Location()
+lname = 'name'
+lregion = 'region'
+llatitude = 01
+llongitude = 12
+ltimezone = 'US/Central'
+lelevation = 0
+lsun()
+Note: name and region can be anything you like
+Access to the current geocoder can be made through the Astral class:
+>>> a = Astral()
+>>> geo = ageocoder
+>>> london = geo['London']
+Timezone groups such as Europe can be accessed via attributes on the AstralGeocoder:
+>>> geo = AstralGeocoder()
+>>> europe = geoeuropelocations
+>>> europesort()
+>>> europe
+['Aberdeen', 'Amsterdam', 'Andorra la Vella', 'Ankara', 'Athens', ]
+4
+Chapter 1 Example
+CHAPTER
+2
+Note on Localized Timezones
+When creating a datetime object in a specific timezone do not use the tzinfo parameter to the datetime constructor
+Instead please use the localize() method on the correct pytz timezone:
+dt = datetimedatetime(2015, 1, 1, 9, 0, 0)
+dt = pytztimezone('Europe/London')localize(dt)
+5
+Astral v14, Release 14
+6
+Chapter 2 Note on Localized Timezones
+CHAPTER
+3
+License
+This module is licensed under the terms of the Apache V20 license
+7
+Astral v14, Release 14
+8
+Chapter 3 License
+CHAPTER
+4
+Dependencies
+Astral has one external Python dependency on ‘pytz’
+9
+Astral v14, Release 14
+10
+Chapter 4 Dependencies
+CHAPTER
+5
+Installation
+To install Astral you should use the pip tool:
+pip install astral
+11
+Astral v14, Release 14
+12
+Chapter 5 Installation
+CHAPTER
+6
+Cities
+The module includes location and time zone data for the following cities The list includes all capital cities plus some
+from the UK The list also includes the US state capitals and some other US cities
+Aberdeen, Abu Dhabi, Abu Dhabi, Abuja, Accra, Addis Ababa, Adelaide, Al Jubail, Albany, Albuquerque, Algiers, Amman, Amsterdam, Anchorage, Andorra la Vella, Ankara, Annapolis, Antananarivo, Apia, Ashgabat, Asmara, Astana, Asuncion, Athens, Atlanta, Augusta, Austin, Avarua, Baghdad, Baku, Baltimore, Bamako, Bandar
+Seri Begawan, Bangkok, Bangui, Banjul, Barrow-In-Furness, Basse-Terre, Basseterre, Baton Rouge, Beijing, Beirut,
+Belfast, Belgrade, Belmopan, Berlin, Bern, Billings, Birmingham, Birmingham, Bishkek, Bismarck, Bissau, Bloemfontein, Bogota, Boise, Bolton, Boston, Bradford, Brasilia, Bratislava, Brazzaville, Bridgeport, Bridgetown, Brisbane,
+Bristol, Brussels, Bucharest, Bucuresti, Budapest, Buenos Aires, Buffalo, Bujumbura, Burlington, Cairo, Canberra,
+Cape Town, Caracas, Cardiff, Carson City, Castries, Cayenne, Charleston, Charlotte, Charlotte Amalie, Cheyenne,
+Chicago, Chisinau, Cleveland, Columbia, Columbus, Conakry, Concord, Copenhagen, Cotonou, Crawley, Dakar, Dallas, Damascus, Dammam, Denver, Des Moines, Detroit, Dhaka, Dili, Djibouti, Dodoma, Doha, Douglas, Dover,
+Dublin, Dushanbe, Edinburgh, El Aaiun, Fargo, Fort-de-France, Frankfort, Freetown, Funafuti, Gaborone, George
+Town, Georgetown, Gibraltar, Glasgow, Greenwich, Guatemala, Hanoi, Harare, Harrisburg, Hartford, Havana, Helena, Helsinki, Hobart, Hong Kong, Honiara, Honolulu, Houston, Indianapolis, Islamabad, Jackson, Jacksonville,
+Jakarta, Jefferson City, Jerusalem, Juba, Jubail, Juneau, Kabul, Kampala, Kansas City, Kathmandu, Khartoum, Kiev,
+Kigali, Kingston, Kingston, Kingstown, Kinshasa, Koror, Kuala Lumpur, Kuwait, La Paz, Lansing, Las Vegas, Leeds,
+Leicester, Libreville, Lilongwe, Lima, Lincoln, Lisbon, Little Rock, Liverpool, Ljubljana, Lome, London, Los Angeles, Louisville, Luanda, Lusaka, Luxembourg, Macau, Madinah, Madison, Madrid, Majuro, Makkah, Malabo, Male,
+Mamoudzou, Managua, Manama, Manchester, Manchester, Manila, Maputo, Maseru, Masqat, Mbabane, Mecca,
+Medina, Memphis, Mexico, Miami, Milwaukee, Minneapolis, Minsk, Mogadishu, Monaco, Monrovia, Montevideo,
+Montgomery, Montpelier, Moroni, Moscow, Moskva, Mumbai, Muscat, N’Djamena, Nairobi, Nashville, Nassau,
+Naypyidaw, New Delhi, New Orleans, New York, Newark, Newcastle, Newcastle Upon Time, Ngerulmud, Niamey,
+Nicosia, Norwich, Nouakchott, Noumea, Nuku’alofa, Nuuk, Oklahoma City, Olympia, Omaha, Oranjestad, Orlando,
+Oslo, Ottawa, Ouagadougou, Oxford, P’yongyang, Pago Pago, Palikir, Panama, Papeete, Paramaribo, Paris, Perth,
+Philadelphia, Phnom Penh, Phoenix, Pierre, Plymouth, Podgorica, Port Louis, Port Moresby, Port of Spain, Port-Vila,
+Port-au-Prince, Portland, Portland, Porto-Novo, Portsmouth, Prague, Praia, Pretoria, Pristina, Providence, Quito, Rabat, Raleigh, Reading, Reykjavik, Richmond, Riga, Riyadh, Road Town, Rome, Roseau, Sacramento, Saint Helier,
+Saint Paul, Saint Pierre, Saipan, Salem, Salt Lake City, San Diego, San Francisco, San Jose, San Juan, San Marino,
+San Salvador, Sana, Sana’a, Santa Fe, Santiago, Santo Domingo, Sao Tome, Sarajevo, Seattle, Seoul, Sheffield, Singapore, Sioux Falls, Skopje, Sofia, Southampton, Springfield, Sri Jayawardenapura Kotte, St George’s, St John’s,
+St Peter Port, Stanley, Stockholm, Sucre, Suva, Swansea, Swindon, Sydney, T’bilisi, Taipei, Tallahassee, Tallinn,
+13
+Astral v14, Release 14
+Tarawa, Tashkent, Tbilisi, Tegucigalpa, Tehran, Thimphu, Tirana, Tirane, Tokyo, Toledo, Topeka, Torshavn, Trenton, Tripoli, Tunis, Ulaanbataar, Ulan Bator, Vaduz, Valletta, Vienna, Vientiane, Vilnius, Virginia Beach, W Indies,
+Warsaw, Washington DC, Wellington, Wichita, Willemstad, Wilmington, Windhoek, Wolverhampton, Yamoussoukro,
+Yangon, Yaounde, Yaren, Yerevan, Zagreb
+US Cities
+Albany, Albuquerque, Anchorage, Annapolis, Atlanta, Augusta, Austin, Baltimore, Baton Rouge, Billings, Birmingham, Bismarck, Boise, Boston, Bridgeport, Buffalo, Burlington, Carson City, Charleston, Charlotte, Cheyenne,
+Chicago, Cleveland, Columbia, Columbus, Concord, Dallas, Denver, Des Moines, Detroit, Dover, Fargo, Frankfort,
+Harrisburg, Hartford, Helena, Honolulu, Houston, Indianapolis, Jackson, Jacksonville, Jefferson City, Juneau, Kansas
+City, Lansing, Las Vegas, Lincoln, Little Rock, Los Angeles, Louisville, Madison, Manchester, Memphis, Miami,
+Milwaukee, Minneapolis, Montgomery, Montpelier, Nashville, New Orleans, New York, Newark, Oklahoma City,
+Olympia, Omaha, Orlando, Philadelphia, Phoenix, Pierre, Portland, Portland, Providence, Raleigh, Richmond, Sacramento, Saint Paul, Salem, Salt Lake City, San Diego, San Francisco, Santa Fe, Seattle, Sioux Falls, Springfield,
+Tallahassee, Toledo, Topeka, Trenton, Virginia Beach, Wichita, Wilmington
+14
+Chapter 6 Cities
+CHAPTER
+7
+Thanks
+The sun calculations in this module were adapted, for Python, from the spreadsheets on the following page
+https://wwwesrlnoaagov/gmd/grad/solcalc/calcdetailshtml
+The moon phase calculation is based on some javascript code from Sky and Telescope magazine
+Moon-phase calculation
+Roger W Sinnott, Sky & Telescope, June 16, 2006
+Also to Sphinx for making doc generation an easy thing (not that the writing of the docs is any easier)
+15
+Astral v14, Release 14
+16
+Chapter 7 Thanks
+CHAPTER
+8
+Contact
+Simon Kennedy <sffjunkie+code@gmailcom>
+17
+Astral v14, Release 14
+18
+Chapter 8 Contact
+19
+Astral v14, Release 14
+CHAPTER
+9
+Version History
+Version
+141
+14
+134
+133
+132
+131
+13
+12
+20
+11
+Description
+• Using versioneer to manage version numbers
+• Changed to use calculations from NOAA spreadsheets
+• Changed some exception error messages for
+when sun does not reach a requested elevation
+• Added more tests
+• Changes to project configuration files No user
+facing changes
+• Fixed call to twilight_utc as date and direction parameters were reversed
+• Updated URL to point to gitgubcom
+• Added Apache 20 boilerplate to source file
+• Added LICENSE file to sdist
+• Corrected solar zenith to return the angle from the
+vertical
+• Added solar midnight calculation
+• Added handling for when unicode literals are
+used This may possibly affect your code if you’re
+using Python 2 (there are tests for this but they
+may not catch all uses) (Bug 1588198)
+• Changed timezone for Phoenix, AZ to America/Phoenix (Bug 1561258)
+Chapter 9 Version History
+• Added methods to calculate Twilight, the Golden
+Hour and the Blue Hour
+Astral v14, Release 14
+The astral Module
+The astral module provides the means to calculate dawn, sunrise, solar noon, sunset, dusk and rahukaalam times,
+plus solar azimuth and elevation, for specific locations or at a specific latitude/longitude It can also calculate the moon
+phase for a specific date
+The module provides 2 main classes Astral and Location
+Astral Has 2 main responsibilities
+• Calculates the events in the UTC timezone
+• Provides access to location data
+Location Holds information about a location and provides functions to calculate the event times for the location in
+the correct time zone
+For example
+>>> from astral import *
+>>> a = Astral()
+>>> location = a['London']
+>>> print('Information for %s' % locationname)
+Information for London
+>>> timezone = locationtimezone
+>>> print('Timezone: %s' % timezone)
+Timezone: Europe/London
+>>> print('Latitude: %02f; Longitude: %02f' % (locationlatitude,
+ locationlongitude))
+Latitude: 5160; Longitude: 005
+>>> from datetime import date
+>>> d = date(2009,4,22)
+>>> sun = locationsun(local=True, date=d)
+>>> print('Dawn:
+%s' % str(sun['dawn']))
+Dawn:
+2009-04-22 05:12:56+01:00
+The module currently provides 2 methods of obtaining location information; AstralGeocoder (the default, which
+uses information from within the module) and GoogleGeocoder (which obtains information from Google’s Map
+Service)
+To use the GoogleGeocoder pass the class as the geocoder parameter to Astral__init__() or by setting the
+geocoder property to an instance of GoogleGeocoder:
+>>> from astral import GoogleGeocoder
+>>> a = Astral(GoogleGeocoder)
+or
+>>> from astral import GoogleGeocoder
+>>> a = Astral()
+>>> ageocoder = GoogleGeocoder()
+Astral
+class astralAstral(geocoder=<class ‘astralAstralGeocoder’>)
+91 The astral Module
+21
+Astral v14, Release 14
+__getitem__(key)
+Returns the Location instance specified by key
+solar_depression
+The number of degrees the sun must be below the horizon for the dawn/dusk calculation
+Can either be set as a number of degrees below the horizon or as one of the following strings
+String
+civil
+nautical
+astronomical
+Degrees
+60
+120
+180
+sun_utc(date, latitude, longitude)
+Calculate all the info for the sun at once All times are returned in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns Dictionary with keys dawn, sunrise, noon, sunset and dusk whose values are
+the results of the corresponding _utc methods
+Return type dict
+dawn_utc(date, latitude, longitude, depression=0)
+Calculate dawn time in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+• depression (float) – Override the depression used
+Returns The UTC date and time at which dawn occurs
+Return type datetime
+sunrise_utc(date, latitude, longitude)
+Calculate sunrise time in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The UTC date and time at which sunrise occurs
+Return type datetime
+solar_noon_utc(date, longitude)
+Calculate solar noon time in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+22
+Chapter 9 Version History
+Astral v14, Release 14
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The UTC date and time at which noon occurs
+Return type datetime
+sunset_utc(date, latitude, longitude)
+Calculate sunset time in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The UTC date and time at which sunset occurs
+Return type datetime
+dusk_utc(date, latitude, longitude, depression=0)
+Calculate dusk time in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+• depression (float) – Override the depression used
+Returns The UTC date and time at which dusk occurs
+Return type datetime
+solar_midnight_utc(date, longitude)
+Calculate solar midnight time in the UTC timezone
+Note that this claculates the solar midgnight that is closest to 00:00:00 of the specified date ie it may
+return a time that is on the previous day
+Parameters
+• date (datetimedate) – Date to calculate for
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The UTC date and time at which midnight occurs
+Return type datetime
+daylight_utc(date, latitude, longitude)
+Calculate daylight start and end times in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns A tuple of the UTC date and time at which daylight starts and ends
+Return type (datetime, datetime)
+91 The astral Module
+23
+Astral v14, Release 14
+night_utc(date, latitude, longitude)
+Calculate night start and end times in the UTC timezone
+Night is calculated to be between astronomical dusk on the date specified and astronomical dawn of the
+next day
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns A tuple of the UTC date and time at which night starts and ends
+Return type (datetime, datetime)
+twilight_utc(direction, date, latitude, longitude)
+Returns the start and end times of Twilight in the UTC timezone when the sun is traversing in the specified
+direction
+This method defines twilight as being between the time when the sun is at -6 degrees and sunrise/sunset
+Parameters
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING
+• date (datetimedate) – The date for which to calculate the times
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns A tuple of the UTC date and time at which twilight starts and ends
+Return type (datetime, datetime)
+golden_hour_utc(direction, date, latitude, longitude)
+Returns the start and end times of the Golden Hour in the UTC timezone when the sun is traversing in the
+specified direction
+This method uses the definition from PhotoPills ie the golden hour is when the sun is between 4 degrees
+below the horizon and 6 degrees above
+Parameters
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING
+• date (datetimedate) – The date for which to calculate the times
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns A tuple of the UTC date and time at which the Golden Hour starts and ends
+Return type (datetime, datetime)
+blue_hour_utc(direction, date, latitude, longitude)
+Returns the start and end times of the Blue Hour in the UTC timezone when the sun is traversing in the
+specified direction
+This method uses the definition from PhotoPills ie the blue hour is when the sun is between 6 and 4
+degrees below the horizon
+24
+Chapter 9 Version History
+Astral v14, Release 14
+Parameters
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING
+• date (datetimedate) – The date for which to calculate the times
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns A tuple of the UTC date and time at which the Blue Hour starts and ends
+Return type (datetime, datetime)
+time_at_elevation_utc(elevation, direction, date, latitude, longitude)
+Calculate the time in the UTC timezone when the sun is at the specified elevation on the specified date
+Note: This method uses positive elevations for those above the horizon
+Parameters
+• elevation (float) – Elevation in degrees above the horizon to calculate for
+• direction (int) – Determines whether the calculated time is for the sun rising or
+setting Use astralSUN_RISING or astralSUN_SETTING Default is rising
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The UTC date and time at which the sun is at the required elevation
+Return type datetime
+solar_azimuth(dateandtime, latitude, longitude)
+Calculate the azimuth angle of the sun
+Parameters
+• dateandtime (datetime) – The date and time for which to calculate the angle
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The azimuth angle in degrees clockwise from North
+Return type float
+If dateandtime is a naive Python datetime then it is assumed to be in the UTC timezone
+solar_elevation(dateandtime, latitude, longitude)
+Calculate the elevation angle of the sun
+Parameters
+• dateandtime (datetime) – The date and time for which to calculate the angle
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The elevation angle in degrees above the horizon
+Return type float
+If dateandtime is a naive Python datetime then it is assumed to be in the UTC timezone
+91 The astral Module
+25
+Astral v14, Release 14
+solar_zenith(dateandtime, latitude, longitude)
+Calculates the solar zenith angle
+Parameters
+• dateandtime (datetime) – The date and time for which to calculate the angle
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns The zenith angle in degrees from vertical
+Return type float
+If dateandtime is a naive Python datetime then it is assumed to be in the UTC timezone
+moon_phase(date)
+Calculates the phase of the moon on the specified date
+Parameters date (datetimedate) – The date to calculate the phase for
+Returns
+A number designating the phase
+0 = New moon
+7 = First quarter
+14 = Full moon
+21 = Last quarter
+Return type int
+rahukaalam_utc(date, latitude, longitude)
+Calculate ruhakaalam times in the UTC timezone
+Parameters
+• date (datetimedate) – Date to calculate for
+• latitude (float) – Latitude - Northern latitudes should be positive
+• longitude (float) – Longitude - Eastern longitudes should be positive
+Returns Tuple containing the start and end times for Rahukaalam
+Return type tuple
+Location
+class astralLocation(info=None)
+Provides access to information for single location
+__init__(info=None)
+Initializes the object with a tuple of information
+Parameters info – A tuple of information to fill in the location info
+The tuple should contain items in the following order
+26
+Chapter 9 Version History
+Astral v14, Release 14
+Field
+name
+region
+latitude
+longitude
+time zone name
+elevation
+Default
+Greenwich
+England
+51168
+0
+Europe/London
+24
+See timezone property for a method of obtaining time zone names
+latitude
+The location’s latitude
+latitude can be set either as a string or as a number
+For strings they must be of the form
+degrees°minutes’[N|S] eg 51°31’N
+For numbers, positive numbers signify latitudes to the North
+longitude
+The location’s longitude
+longitude can be set either as a string or as a number
+For strings they must be of the form
+degrees°minutes’[E|W] eg 51°31’W
+For numbers, positive numbers signify longitudes to the East
+elevation
+The elevation in metres above sea level
+timezone
+The name of the time zone for the location
+A list of time zone names can be obtained from pytz For example
+>>> from pytz import all_timezones
+>>> for timezone in all_timezones:
+print(timezone)
+tz
+Time zone information
+tzinfo
+Time zone information
+solar_depression
+The number of degrees the sun must be below the horizon for the dawn/dusk calculation
+Can either be set as a number of degrees below the horizon or as one of the following strings
+String
+civil
+nautical
+astronomical
+Degrees
+60
+120
+180
+sun(date=None, local=True)
+Returns dawn, sunrise, noon, sunset and dusk as a dictionary
+Parameters
+91 The astral Module
+27
+Astral v14, Release 14
+• date – The date for which to calculate the times If no date is specified then the current
+date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns Dictionary with keys dawn, sunrise, noon, sunset and dusk whose values are
+the results of the corresponding methods
+Return type dict
+dawn(date=None, local=True)
+Calculates the time in the morning when the sun is a certain number of degrees below the horizon By
+default this is 6 degrees but can be changed by setting the Astralsolar_depression property
+Parameters
+• date – The date for which to calculate the dawn time If no date is specified then the
+current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns The date and time at which dawn occurs
+Return type datetime
+sunrise(date=None, local=True)
+Return sunrise time
+Calculates the time in the morning when the sun is a 0833 degrees below the horizon This is to account
+for refraction
+Parameters
+• date – The date for which to calculate the sunrise time If no date is specified then the
+current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns The date and time at which sunrise occurs
+Return type datetime
+solar_noon(date=None, local=True)
+Calculates the solar noon (the time when the sun is at its highest point)
+Parameters
+• date – The date for which to calculate the noon time If no date is specified then the
+current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns The date and time at which the solar noon occurs
+Return type datetime
+sunset(date=None, local=True)
+Calculates sunset time (the time in the evening when the sun is a 0833 degrees below the horizon This is
+to account for refraction)
+Parameters
+28
+Chapter 9 Version History
+Astral v14, Release 14
+• date – The date for which to calculate the sunset time If no date is specified then the
+current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns The date and time at which sunset occurs
+Return type datetime
+dusk(date=None, local=True)
+Calculates the dusk time (the time in the evening when the sun is a certain number of degrees below the
+horizon By default this is 6 degrees but can be changed by setting the solar_depression property)
+Parameters
+• date – The date for which to calculate the dusk time If no date is specified then the
+current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns The date and time at which dusk occurs
+Return type datetime
+daylight(date=None, local=True)
+Calculates the daylight time (the time between sunrise and sunset)
+Parameters
+• date – The date for which to calculate daylight If no date is specified then the current
+date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns A tuple containing the start and end times
+Return type tuple(datetime, datetime)
+night(date=None, local=True)
+Calculates the night time (the time between astronomical dusk and astronomical dawn of the next day)
+Parameters
+• date – The date for which to calculate the start of the night time If no date is specified
+then the current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns A tuple containing the start and end times
+Return type tuple(datetime, datetime)
+twilight(direction=SUN_RISING, date=None, local=True)
+Returns the start and end times of Twilight in the UTC timezone when the sun is traversing in the specified
+direction
+This method defines twilight as being between the time when the sun is at -6 degrees and sunrise/sunset
+Parameters
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING
+91 The astral Module
+29
+Astral v14, Release 14
+• date (datetimedate) – The date for which to calculate the times
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns A tuple of the UTC date and time at which twilight starts and ends
+Return type (datetime, datetime)
+golden_hour(direction=SUN_RISING, date=None, local=True)
+Returns the start and end times of the Golden Hour when the sun is traversing in the specified direction
+This method uses the definition from PhotoPills ie the golden hour is when the sun is between 4 degrees
+below the horizon and 6 degrees above
+Parameters
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING Default is rising
+• date (datetimedate) – The date for which to calculate the times
+• local – True = Times to be returned in location’s time zone; False = Times to be returned
+in UTC If not specified then the time will be returned in local time
+Returns A tuple of the date and time at which the Golden Hour starts and ends
+Return type (datetime, datetime)
+blue_hour(direction=SUN_RISING, date=None, local=True)
+Returns the start and end times of the Blue Hour when the sun is traversing in the specified direction
+This method uses the definition from PhotoPills ie the blue hour is when the sun is between 6 and 4
+degrees below the horizon
+Parameters
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING Default is rising
+• date – The date for which to calculate the times If no date is specified then the current
+date will be used
+• local – True = Times to be returned in location’s time zone; False = Times to be returned
+in UTC If not specified then the time will be returned in local time
+Returns A tuple of the date and time at which the Blue Hour starts and ends
+Return type (datetime, datetime)
+time_at_elevation(elevation, direction=SUN_RISING, date=None, local=True)
+Calculate the time when the sun is at the specified elevation
+Note: This method uses positive elevations for those above the horizon
+Elevations greater than 90 degrees are converted to a setting sun ie an elevation of 110 will calculate
+a setting sun at 70 degrees
+Parameters
+• elevation (float) – Elevation in degrees above the horizon to calculate for
+• direction (int) – Determines whether the time is for the sun rising or setting Use
+astralSUN_RISING or astralSUN_SETTING Default is rising
+30
+Chapter 9 Version History
+Astral v14, Release 14
+• date – The date for which to calculate the elevation time If no date is specified then the
+current date will be used
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC If not specified then the time will be returned in local time
+Returns The date and time at which dusk occurs
+Return type datetime
+solar_azimuth(dateandtime=None)
+Calculates the solar azimuth angle for a specific date/time
+Parameters dateandtime (datetime) – The date and time for which to calculate the angle
+Returns The azimuth angle in degrees clockwise from North
+Return type float
+solar_elevation(dateandtime=None)
+Calculates the solar elevation angle for a specific time
+Parameters dateandtime (datetime) – The date and time for which to calculate the angle
+Returns The elevation angle in degrees above the horizon
+Return type float
+solar_zenith(dateandtime=None)
+Calculates the solar zenith angle for a specific time
+Parameters dateandtime (datetime) – The date and time for which to calculate the angle
+Returns The zenith angle in degrees from vertical
+Return type float
+moon_phase(date=None)
+Calculates the moon phase for a specific date
+Parameters date (datetimedate) – The date to calculate the phase for If ommitted the
+current date is used
+Returns
+A number designating the phase
+0 = New moon
+7 = First quarter
+14 = Full moon
+21 = Last quarter
+Return type int
+rahukaalam(date=None, local=True)
+Calculates the period of rahukaalam
+Parameters
+• date – The date for which to calculate the rahukaalam period A value of None uses the
+current date
+• local – True = Time to be returned in location’s time zone; False = Time to be returned
+in UTC
+Returns Tuple containing the start and end times for Rahukaalam
+91 The astral Module
+31
+Astral v14, Release 14
+Return type tuple
+Geocoders
+class astralAstralGeocoder
+Looks up geographic information from the locations stored within the module
+class astralGoogleGeocoder(cache=False)
+Use Google Maps API Web Service to lookup GPS co-ordinates, timezone and elevation
+See the following for more info https://developersgooglecom/maps/documentation/
+32
+Chapter 9 Version History
+Python Module Index
+a
+astral, 21
+33
+Astral v14, Release 14
+34
+Python Module Index
+Index
+Symbols
+N
+__getitem__() (astralAstral method), 21
+__init__() (astralLocation method), 26
+night() (astralLocation method), 29
+night_utc() (astralAstral method), 23
+A
+R
+Astral (class in astral), 21
+astral (module), 21
+AstralGeocoder (class in astral), 32
+rahukaalam() (astralLocation method), 31
+rahukaalam_utc() (astralAstral method), 26
+B
+blue_hour() (astralLocation method), 30
+blue_hour_utc() (astralAstral method), 24
+D
+dawn() (astralLocation method), 28
+dawn_utc() (astralAstral method), 22
+daylight() (astralLocation method), 29
+daylight_utc() (astralAstral method), 23
+dusk() (astralLocation method), 29
+dusk_utc() (astralAstral method), 23
+E
+elevation (astralLocation attribute), 27
+G
+golden_hour() (astralLocation method), 30
+golden_hour_utc() (astralAstral method), 24
+GoogleGeocoder (class in astral), 32
+L
+latitude (astralLocation attribute), 27
+Location (class in astral), 26
+longitude (astralLocation attribute), 27
+M
+S
+solar_azimuth() (astralAstral method), 25
+solar_azimuth() (astralLocation method), 31
+solar_depression (astralAstral attribute), 22
+solar_depression (astralLocation attribute), 27
+solar_elevation() (astralAstral method), 25
+solar_elevation() (astralLocation method), 31
+solar_midnight_utc() (astralAstral method), 23
+solar_noon() (astralLocation method), 28
+solar_noon_utc() (astralAstral method), 22
+solar_zenith() (astralAstral method), 25
+solar_zenith() (astralLocation method), 31
+sun() (astralLocation method), 27
+sun_utc() (astralAstral method), 22
+sunrise() (astralLocation method), 28
+sunrise_utc() (astralAstral method), 22
+sunset() (astralLocation method), 28
+sunset_utc() (astralAstral method), 23
+T
+time_at_elevation() (astralLocation method), 30
+time_at_elevation_utc() (astralAstral method), 25
+timezone (astralLocation attribute), 27
+twilight() (astralLocation method), 29
+twilight_utc() (astralAstral method), 24
+tz (astralLocation attribute), 27
+tzinfo (astralLocation attribute), 27
+moon_phase() (astralAstral method), 26
+moon_phase() (astralLocation method), 31
+35

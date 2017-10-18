@@ -1,0 +1,58 @@
+id,created_at,text
+903841475976282112,2017-09-02 04:46:15,RT @ThePSF: Python is the #1 programming language in the world: https://t.co/MgBkbPu8V2 - Proud to be part of this wonderful community. #po…
+899294937434304514,2017-08-20 15:39:55,"RT @_: Using @slackhq makes me more productive, except when I spend 10 minutes trying to find Party Popper emoji only to find out it's call…"
+895889383634509824,2017-08-11 06:07:28,zip(zero or more) function allows you to iterate over number of iterables. #Python https://t.co/g4InE1FM5j
+895144245463351296,2017-08-09 04:46:33,You can concatenate list of string using String join() method #Python https://t.co/rFZtUQQbEG
+894947793210560512,2017-08-08 15:45:55,"filter (function,iterable) - evaulate given iterable against a condition and creates new iterable with items passin… https://t.co/4WcsGDh9x7"
+894424231680901120,2017-08-07 05:05:29,map() creates a new iterable by applying a given function to every element of the source iterable. #Python https://t.co/Byarir8S6t
+893378138549374976,2017-08-04 07:48:41,Using timedelta to find the differences between dates in #Python. https://t.co/mZOnHAjQiJ
+892971539720568833,2017-08-03 04:53:00,Try using strftime function to convert python date-time object to string. #Python https://t.co/ZJqnhIQIiC
+892619097707614210,2017-08-02 05:32:31,Generators are iterators where the values are generated at the time of need without creating or saving all items.… https://t.co/pkZmmRgz4U
+892253263676010496,2017-08-01 05:18:49,"You can pass function as an argument, assign a #function to a variable in #Python. https://t.co/vQbZThGodU"
+891995631312670721,2017-07-31 12:15:05,Try using built-in method 'enumerate' for any iterables in #Python. https://t.co/D9Udmn6qrY
+890818106209165312,2017-07-28 06:16:01,"Python treats mutable default arguments in function definitions differently #Python
+Here comes both good and bad pr… https://t.co/qOMlswoUAl"
+890440618220105729,2017-07-27 05:16:01,"Try using two leading underscores ( __x ), to define private class variables. #Python https://t.co/uAQNh9aFkC"
+890047797910745089,2017-07-26 03:15:05,"If there is no any exceptions at TRY clause, the ELSE clause will be executed. #Python https://t.co/nC7eK6iFWP"
+889710635952611328,2017-07-25 04:55:20,Using compound statements in #Python is a good practice! https://t.co/GWsQAmC60y
+889428728916443136,2017-07-24 10:15:08,Right way to use string split method in #Python. https://t.co/BQUOe9DGNK
+888250950867185664,2017-07-21 04:15:04,"Empty list ([ ]), zero (0), float zero ( 0.0 ), None and Empty String ( """") always evaluate to False. #Python https://t.co/5JP160oflW"
+887954990303784960,2017-07-20 08:39:01,Try to use all CAPS_AND_UNDERSCORE to identify constants in #python https://t.co/xTaeRARbCd
+887556367128637440,2017-07-19 06:15:02,"Checking whether two objects (lists, dictionaries, custom objects) you created are equal or not is called a test of… https://t.co/7UdbgWlO0b"
+887139119066906624,2017-07-18 02:37:02,Use get() method in #Python's dictionary to return a default value if key is not found. #programming https://t.co/1Oo0jarzMw
+549388971638128640,2014-12-29 02:18:32,"Comparisons can be chained arbitrarily in #python. 
+x &lt; y &lt;= z 
+is equivalent to 
+x &lt; y and y &lt;= z"
+549031235864252416,2014-12-28 02:37:01,"Use slice() function in #python in naming slices.
+
+&gt;&gt; lst = [1, 2, 3, 4, 5]
+&gt;&gt; first_two = slice(0, 2)
+&gt;&gt; lst[first_two]
+
+Output: [1, 2]"
+548763690171109376,2014-12-27 08:53:53,Use enumerate in #python to count the index in an iteration. #programming http://t.co/6BCTApmdvC
+547641483151802369,2014-12-24 06:34:38,"New style class in which offer super, method resolution order and descriptors are default classes in #Python 3.x. http://t.co/DSjMDSVVsM"
+536715008650903553,2014-11-24 02:56:44,"Represent infinity and NaN in #Python and perform operations
+
+&gt;&gt; a = float('inf')
+&gt;&gt; a*20
+inf
+
+&gt;&gt; b = float('-inf')
+&gt;&gt; c = float('nan')"
+533977047627218944,2014-11-16 13:37:03,You can also use those functions which needs multiple arguments as mapper functions.  #python #programming http://t.co/JisPrRtZ58
+533625224022200321,2014-11-15 14:19:02,Use with statement for opening a file which automatically closes the file after nested block. #python #programming. http://t.co/Nabcj57kSN
+533478392143052800,2014-11-15 04:35:34,Use collections.Counter in #Python to find the number of occurrence of each values in an iterable. #programming http://t.co/bGSIHHr4Jz
+533188143772864512,2014-11-14 09:22:14,Use get() method in #Python's dictionary to return a default value if key is not found. #programming http://t.co/KSTuYWaOZC
+533100872365260800,2014-11-14 03:35:27,List comprehension in #python is more beautiful and faster than appending to a list multiple times. #programming http://t.co/HmoFU7kaIJ
+529557294837551104,2014-11-04 08:54:32,"RT @raymondh: #python tip:  PYC files are somewhat simple:
+
+import dis, marshal
+
+with open('mymod.pyc', 'rb') as f:
+  f.seek(8)
+  dis.dis(m…"
+494722894681751553,2014-07-31 05:55:04,"RT @raymondh: #python golden rule:  Do not PEP 8 unto others; only PEP 8 thy self.   
+Don't let PEP 8 make you insanely intolerant of other…"
+492879764252684288,2014-07-26 03:51:07,When possible use .join to concatenate two strings rather than +. #python tip http://t.co/lzQi5EL3xg

@@ -1,0 +1,74 @@
+Natural Language Toolkit
+
+The Natural Language Toolkit, or more commonly NLTK, is a suite of libraries and programs for symbolic and statistical natural language processing (NLP) for English written in the Python programming language. It was developed by Steven Bird and Edward Loper in the Department of Computer and Information Science at the University of Pennsylvania. NLTK includes graphical demonstrations and sample data. It is accompanied by a book that explains the underlying concepts behind the language processing tasks supported by the toolkit, plus a cookbook.
+NLTK is intended to support research and teaching in NLP or closely related areas, including empirical linguistics, cognitive science, artificial intelligence, information retrieval, and machine learning. NLTK has been used successfully as a teaching tool, as an individual study tool, and as a platform for prototyping and building research systems. There are 32 universities in the US and 25 countries using NLTK in their courses. NLTK supports classification, tokenization, stemming, tagging, parsing, and semantic reasoning functionalities.Natural language processing
+
+Natural language processing (NLP) is a field of computer science, artificial intelligence and computational linguistics concerned with the interactions between computers and human (natural) languages, and, in particular, concerned with programming computers to fruitfully process large natural language corpora. Challenges in natural language processing frequently involve natural language understanding, natural language generation (frequently from formal, machine-readable logical forms), connecting language and machine perception, dialog systems, or some combination thereof.Outline of natural language processing
+
+Natural language processing – computer activity in which computers are entailed to analyze, understand, alter, or generate natural language. This includes the automation of any or all linguistic forms, activities, or methods of communication, such as conversation, correspondence, reading, written composition, dictation, publishing, translation, lip reading, and so on. Natural language processing is also the name of the branch of computer science, artificial intelligence, and linguistics concerned with enabling computers to engage in communication using natural language(s) in all forms, including but not limited to speech, print, writing, and signing.Computer language
+
+Computer language may refer to:
+Programming language, a formal language designed to communicate instructions to a machine, particularly a computer
+Command language, a language used to control the tasks of the computer itself, such as starting other programs
+Machine language or machine code, a set of instructions executed directly by a computer's central processing unit
+Markup language, a grammar for annotating a document in a way that is syntactically distinguishable from the text, such as HTML
+Style sheet language, a computer language that expresses the presentation of structured documents, such as CSS
+Configuration language, a language used to write configuration files
+Construction language, a general category that includes configuration languages, toolkit languages, and programming languages
+Query language, a language used to make queries in databases and information systems
+Modeling language, a formal language used to express information or knowledge, often for use in computer system design
+Hardware description language, used to model integrated circuitsList of toolkits
+
+A toolkit is an assembly of tools; set of basic building units for user interfaces.
+The word toolkit may refer to:
+Abstract Window Toolkit
+Accessibility Toolkit
+Adventure Game Toolkit
+B-Toolkit
+Battlefield Mod Development Toolkit
+Cheminformatics toolkits
+Dojo Toolkit
+Fox toolkit
+Globus Toolkit
+GTK+, the GIMP Toolkit
+Google Web Toolkit (GWT)
+Harmony (toolkit), an incomplete set of software widgets
+Helsinki Finite-State Technology (HFST)
+Insight Segmentation and Registration Toolkit
+IT Mill Toolkit
+Luxor (toolkit)
+Learnosity Toolkit
+Molecular Modelling Toolkit
+Multidimensional hierarchical toolkit
+Sun Java Wireless Toolkit
+OCR SDK, OCR Toolkit
+OpenGL Utility Toolkit
+Open Inventor 3D graphics API
+Qt (toolkit)
+Motif (software)
+Natural Language Toolkit
+Portable, Extensible Toolkit for Scientific Computation
+RWTH FSA Toolkit
+Rialto Toolkit
+Scedu Tender Readiness Toolkit
+Sprite Animation Toolkit
+Standard Widget Toolkit
+Synthesis Toolkit
+Template Toolkit
+The Coroner's Toolkit, computer programs for digital forensic analysis
+User Interface Toolkit (UIM)
+X ToolkitDialog system
+
+A dialog system or conversational agent (CA) is a computer system intended to converse with a human, with a coherent structure. Dialog systems have employed text, speech, graphics, haptics, gestures and other modes for communication on both the input and output channel.
+What does and does not constitute a dialog system may be debatable. The typical GUI wizard does engage in some sort of dialog, but it includes very few of the common dialog system components, and dialog state is trivial.OpenNLP
+
+The Apache OpenNLP library is a machine learning based toolkit for the processing of natural language text. It supports the most common NLP tasks, such as tokenization, sentence segmentation, part-of-speech tagging, named entity extraction, chunking, parsing, language detection and coreference resolution. These tasks are usually required to build more advanced text processing services.Object Constraint Language
+
+The Object Constraint Language (OCL) is a declarative language describing rules applying to Unified Modeling Language (UML) models developed at IBM and is now part of the UML standard. Initially, OCL was merely a formal specification language extension for UML. OCL may now be used with any Meta-Object Facility (MOF) Object Management Group (OMG) meta-model, including UML. The Object Constraint Language is a precise text language that provides constraint and object query expressions on any MOF model or meta-model that cannot otherwise be expressed by diagrammatic notation. OCL is a key component of the new OMG standard recommendation for transforming models, the Queries/Views/Transformations (QVT) specification.Translate Toolkit
+
+The Translate Toolkit is a localization and translation toolkit. It provides a set of tools for working with localization file formats and files that might need localization. The toolkit also provides an API on which to develop other localization tools.
+The toolkit is written in the Python programming language. It is free software originally developed and released by Translate.org.za in 2002 and is now maintained by Translate.org.za and community developers.
+Translate Toolkit uses Enchant as spellchecker.RWTH FSA Toolkit
+
+The RWTH FSA Toolkit is a highly efficient C++ library that handles finite state machines; in particular it deals with weighted and unweighted automata and transducers. It has been designed to be used in a variety of natural language processing applications and was tested with speech recognition and machine translation. It is available under an open-source license.
+The name is taken from the developing University RWTH Aachen.

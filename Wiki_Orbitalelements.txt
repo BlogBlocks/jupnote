@@ -1,0 +1,17 @@
+Orbital elements
+
+Orbital elements are the parameters required to uniquely identify a specific orbit. In celestial mechanics these elements are generally considered in classical two-body systems, where a Kepler orbit is used. There are many different ways to mathematically describe the same orbit, but certain schemes, each consisting of a set of six parameters, are commonly used in astronomy and orbital mechanics.
+A real orbit (and its elements) changes over time due to gravitational perturbations by other objects and the effects of relativity. A Keplerian orbit is merely an idealized, mathematical approximation at a particular time.Proper orbital elements
+
+The proper orbital elements of an orbit are constants of motion of an object in space that remain practically unchanged over an astronomically long timescale. The term is usually used to describe the three quantities:
+proper semimajor axis (ap),
+proper eccentricity (ep), and
+proper inclination (ip).
+The proper elements can be contrasted with the osculating Keplerian orbital elements observed at a particular time or epoch, such as the semi-major axis, eccentricity, and inclination. Those osculating elements change in a quasi-periodic and (in principle) predictable manner due to such effects as perturbations from planets or other bodies, and precession (e.g. perihelion precession). In the Solar System, such changes usually occur on timescales of thousands of years, while proper elements are meant to be practically constant over at least tens of millions of years.
+For most bodies, the osculating elements are relatively close to the proper elements because precession and perturbation effects are relatively small (see diagram). For over 99% of asteroids in the asteroid belt, the differences are less than 0.02 AU (for semi-major axis a), 0.1 (for eccentricity e), and 2° (for inclination i).
+Nevertheless, this difference is non-negligible for any purposes where precision is of importance. As an example, the asteroid Ceres has osculating orbital elements (at epoch November 26, 2005)
+while its proper orbital elements (independent of epoch) are
+A notable exception to this small-difference rule are asteroids lying in the Kirkwood gaps, which are in strong orbital resonance with Jupiter.
+To obtain proper elements for an object, one usually conducts a detailed simulation of its motion over timespans of several millions of years. Such a simulation must take into account many details of celestial mechanics including perturbations by the planets. Subsequently, one extracts quantities from the simulation which remain unchanged over this long timespan; for example, the mean inclination, eccentricity, and semi-major axis. These are the proper orbital elements.
+Historically, various approximate analytic calculations were made, starting with those of Kiyotsugu Hirayama in the early 20th century. Later analytic methods often included thousands of perturbing corrections for each particular object. Presently, the method of choice is to use a computer to numerically integrate the equations of celestial dynamics, and extract constants of motion directly from a numerical analysis of the predicted positions.
+At present the most prominent use of proper orbital elements is in the study of asteroid families, following in the footsteps of the pioneering work of Hirayama. A Mars-crosser asteroid 132 Aethra is the lowest numbered asteroid to not have any proper orbital elements.

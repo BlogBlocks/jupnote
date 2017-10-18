@@ -1,0 +1,11 @@
+Ubuntu (operating system)
+
+Ubuntu ( uu-BUUN-too, stylized as ubuntu) is an open source operating system for computers. It is one of the distribution systems of Linux, and is based on the Debian architecture. It is usually run on personal computers, and is also popular on network servers, usually running the Ubuntu Server variant, with enterprise-class features. Ubuntu runs on the most popular architectures, including Intel, AMD, and ARM-based machines. Ubuntu is also available for tablets and smartphones, with the Ubuntu Touch edition.
+Ubuntu is published by Canonical Ltd, who offer commercial support. It is based on free software and named after the Southern African philosophy of ubuntu (literally, 'human-ness'), which Canonical Ltd. suggests can be loosely translated as "humanity to others" or "I am what I am because of who we all are".
+Ubuntu is the most popular operating system running in hosted environments, so–called "clouds", as it is the most popular server Linux distribution.
+Development of Ubuntu is led by UK-based Canonical Ltd., a company founded by South African entrepreneur Mark Shuttleworth. Canonical generates revenue through the sale of technical support and other services related to Ubuntu. The Ubuntu project is publicly committed to the principles of open-source software development; people are encouraged to use free software, study how it works, improve upon it, and distribute it.Ubuntu Touch
+
+Ubuntu Touch (also known as Ubuntu Phone) was a mobile version of the Ubuntu operating system that was developed by Canonical Ltd. and the Ubuntu community. It was designed primarily for touchscreen mobile devices such as smartphones and tablet computers.
+The project was started in 2011, but on 5 April 2017 Mark Shuttleworth announced that the project would terminate due to lack of market interest. It was then picked up by the UBports community project.List of Linux distributions
+
+This page provides general information about notable Linux distributions in the form of a categorized list. Distributions are organized into sections by the major distribution they are based on, or the package management system they are based around.

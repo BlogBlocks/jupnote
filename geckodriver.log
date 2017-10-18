@@ -1,0 +1,30 @@
+1507167178683	geckodriver	INFO	geckodriver 0.19.0
+1507167178694	geckodriver	INFO	Listening on 127.0.0.1:35663
+1507167180079	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ta3vYSblaedb"
+1507167190733	Marionette	INFO	Listening on port 45606
+1507167190970	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(firefox:22082): GLib-GObject-WARNING **: /build/glib2.0-prJhLS/glib2.0-2.48.2/./gobject/gsignal.c:3486: signal name 'load_complete' is invalid for instance '0x7fcbc5c806f0' of type 'MaiAtkType139'
+1507167231282	Marionette	INFO	New connections will no longer be accepted
+1507167323898	geckodriver	INFO	geckodriver 0.19.0
+1507167323949	geckodriver	INFO	Listening on 127.0.0.1:37362
+1507167325278	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.VM2NrbpA5ZyG"
+1507167330274	Marionette	INFO	Listening on port 36034
+1507167330718	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(firefox:22220): GLib-GObject-WARNING **: /build/glib2.0-prJhLS/glib2.0-2.48.2/./gobject/gsignal.c:3486: signal name 'load_complete' is invalid for instance '0x7faca60fde20' of type 'MaiAtkType139'
+1507167359186	Marionette	INFO	New connections will no longer be accepted
+1507167993795	geckodriver	INFO	geckodriver 0.19.0
+1507167993801	geckodriver	INFO	Listening on 127.0.0.1:47051
+1507167995241	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.rGAnxfzonAho"
+1507167999884	Marionette	INFO	Listening on port 37112
+1507168000371	Marionette	WARN	TLS certificate errors will be ignored for this session
+1507168017357	Marionette	INFO	New connections will no longer be accepted
+1507200741205	geckodriver	INFO	geckodriver 0.19.0
+1507200741226	geckodriver	INFO	Listening on 127.0.0.1:47806
+1507200743791	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ooTCeTgtood8"
+1507200755028	Marionette	INFO	Listening on port 43119
+1507200755300	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+(firefox:5168): GLib-GObject-WARNING **: /build/glib2.0-prJhLS/glib2.0-2.48.2/./gobject/gsignal.c:3486: signal name 'load_complete' is invalid for instance '0x7f41d1490b00' of type 'MaiAtkType139'
+1507200845276	Marionette	INFO	New connections will no longer be accepted

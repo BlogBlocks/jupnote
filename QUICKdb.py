@@ -1,0 +1,32 @@
+def dbstore(insert):
+    import sqlite3
+    conn = sqlite3.connect('XPfts4.db')
+    c = conn.cursor()
+    c.execute("""
+    CREATE VIRTUAL TABLE IF NOT EXISTS history 
+    USING FTS3(hist);
+    """
+             )
+    c = conn.cursor()
+    conn.text_factory = str
+    # CREATE VIRTUAL TABLE pages USING fts4(code);
+    c.execute("INSERT INTO pages VALUES(?)", (insert,))
+
+    conn.commit()
+    conn.close()
+    return 
+    
+    
+def dbread():
+    import sqlite3
+    conn = sqlite3.connect('XPfts4.db')
+    c = conn.cursor()
+    req = 100
+    view = raw_input("Search : ")
+    for row in c.execute('SELECT rowid, code FROM pages WHERE pages MATCH ?', (view,)):    
+        count=count+1
+        print (row)[0],"-",(row)[1],"\n"
+        if count > req:
+            conn.close()
+            sys.exit()
+            return

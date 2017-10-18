@@ -1,0 +1,2518 @@
+Create Key.py nice secure way to use a Twitter API
+
+%%writefile Key.py
+
+def twiter():
+
+    CONSUMER_KEY = 'WWWWWWWWWWWWWWWW'
+
+    CONSUMER_SECRET = 'XXXXXXXXXXXXXXXXX'
+
+    ACCESS_KEY = 'YYYYYYYYYYYYYYYYYYY'
+
+    ACCESS_SECRET = 'ZZZZZZZZZZZZZZZZ'
+
+    twir = (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+
+    return twir
+
+Writing Key.py
+
+Test your key
+
+import sys
+
+import Key
+
+consumer_key = Key.twiter()[0]
+
+consumer_secret = Key.twiter()[1]
+
+access_key = Key.twiter()[2]
+
+access_secret = Key.twiter()[3]
+
+print consumer_key, consumer_secret, access_key, access_secret
+
+​
+
+Gather Tweets from a User
+
+It can easily be 3,000 plus
+
+#!/usr/bin/env python
+
+# encoding: utf-8
+
+​
+
+import tweepy #https://github.com/tweepy/tweepy
+
+import csv
+
+import sys
+
+sys.path.insert(0,"/home/jack/anaconda2/envs/py27/lib/python2.7/site-packages")
+
+import Key
+
+from random import randint
+
+​
+
+#Twitter API credentials
+
+consumer_key = Key.twiter()[0]
+
+consumer_secret = Key.twiter()[1]
+
+access_key = Key.twiter()[2]
+
+access_secret = Key.twiter()[3]
+
+​
+
+def get_all_tweets(screen_name):
+
+    #Twitter only allows access to a users most recent 3240 tweets with this method
+
+    
+
+    #authorize twitter, initialize tweepy
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+
+    auth.set_access_token(access_key, access_secret)
+
+    api = tweepy.API(auth)
+
+    
+
+    #initialize a list to hold all the tweepy Tweets
+
+    alltweets = []  
+
+    
+
+    #make initial request for most recent tweets (200 is the maximum allowed count)
+
+    new_tweets = api.user_timeline(screen_name = screen_name,count=200)
+
+    
+
+    #save most recent tweets
+
+    alltweets.extend(new_tweets)
+
+    
+
+    #save the id of the oldest tweet less one
+
+    oldest = alltweets[-1].id - 1
+
+    
+
+    #keep grabbing tweets until there are no tweets left to grab
+
+    while len(new_tweets) > 0:
+
+        print "getting tweets before %s" % (oldest)
+
+        
+
+        #all subsiquent requests use the max_id param to prevent duplicates
+
+        new_tweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
+
+        
+
+        #save most recent tweets
+
+        alltweets.extend(new_tweets)
+
+        
+
+        #update the id of the oldest tweet less one
+
+        oldest = alltweets[-1].id - 1
+
+        
+
+        print "...%s tweets downloaded so far" % (len(alltweets))
+
+    
+
+    #transform the tweepy tweets into a 2D array that will populate the csv 
+
+    outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
+
+    
+
+    #write the csv  
+
+    with open('%s_tweets.csv' % screen_name, 'wb') as f:
+
+        writer = csv.writer(f)
+
+        writer.writerow(["id","created_at","text"])
+
+        writer.writerows(outtweets)
+
+    
+
+    pass
+
+​
+
+​
+
+if __name__ == '__main__':
+
+    USER = raw_input("User  : ") or "CNN"
+
+    
+
+    get_all_tweets(USER)
+
+Cleanup the CSV file before entering inthe DataBase
+
+!ls *.csv
+
+DailyPythonTips_tweets.csv  importpython_tweets.csv  realDonaldTrump_tweets.csv
+DonaldTrump_tweets.csv	    pythonbot__tweets.csv    symmetrymag_tweets.csv
+elonmusk_tweets.csv	    PythonRR_tweets.csv      TEDTalks_tweets.csv
+
+from itertools import tee
+
+count=0
+
+with open("importpython_tweets.csv") as inf:
+
+    for line in inf:
+
+        lines  = line[39:]
+
+        outf = open("importpython.txt", "a") 
+
+        outf.write(lines)
+
+outf.close() 
+
+Search your newly created symmetrymag.txt
+
+search = raw_input("find  ")
+
+file = open("importpython.txt")
+
+lines = file.readlines()
+
+for line in lines:
+
+    if search in line:
+
+        print line
+
+    if search == True:
+
+        print line
+
+        file.close()
+
+        exit()
+
+file.close()
+
+find  technology
+"RT @anandology: I'm giving a talk on ""Generators in Python 3"" at mumbai technology meetup via hangout at 4PM today. 
+
+Create a Database and Tables
+Using FTS3 - full text search
+
+import sqlite3
+
+conn = sqlite3.connect('collection.db')
+
+c = conn.cursor()
+
+c.execute("""
+
+CREATE VIRTUAL TABLE tweets 
+
+USING FTS3(text, account);
+
+""")
+
+conn.commit()
+
+conn.close()
+
+Enter Data from a File into a Database
+
+import sqlite3
+
+import time
+
+#account = "TEDTalks.txt"
+
+account = "importpython.txt"
+
+#account = "elonmusk.txt"
+
+#account = "realDonaldTrump.txt"
+
+user = account[:-4]
+
+lines = open(account,"r")
+
+line = lines.readline()
+
+for line in lines:
+
+    conn = sqlite3.connect('collection.db')
+
+    # ProgrammingError: You must not use 8-bit bytestrings 
+
+    # unless you use a text_factory 
+
+    conn.text_factory = str
+
+    c = conn.cursor()
+
+    c.execute("INSERT INTO tweets VALUES (?,?)", (line, user)) 
+
+    conn.commit()
+
+    conn.close()        
+
+    
+
+    #print line         
+
+​
+
+conn.commit()
+
+conn.close()                 
+
+---------------------------------------------------------------------------
+ProgrammingError                          Traceback (most recent call last)
+<ipython-input-6-eb6dfc1fb970> in <module>()
+     18     #print line
+     19 
+---> 20 conn.commit()
+     21 conn.close()
+
+ProgrammingError: Cannot operate on a closed database.
+
+Searching and Reading the Twitter Database
+
+import sqlite3
+
+import sys
+
+conn = sqlite3.connect('collection.db')
+
+c = conn.cursor()
+
+count=0
+
+# limits query to 1000
+
+req=1000
+
+search = raw_input("Search : ")
+
+for row in c.execute('SELECT rowid,* FROM tweets WHERE text MATCH ?', (search,)):    
+
+    count=count+1
+
+    print count,"-",(row)[1]," -- by",(row)[2],"\n"
+
+    if count > req:
+
+        conn.close()
+
+        sys.exit()
+
+Search : Flight
+1 - "...to terrorism and airline flight safety. Humanitarian reasons, plus I want Russia to greatly step up their fight against ISIS &amp; terrorism."
+ -- by realDonaldTrump 
+
+2 - "@ClovenLife No, but shielding got fragged every flight. More control authority is for Falcon Heavy, but also enable… https://t.co/mWpvc3JVXK"
+ -- by elonmusk 
+
+3 - RT @SpaceX: Quick video recap of Falcon 9 launch of Inmarsat-5 Flight 4 https://t.co/W8eVUEsH6r
+ -- by elonmusk 
+
+4 - @Cardoso Silliest thing we can imagine! Secret payload of 1st Dragon flight was a giant wheel of cheese. Inspired b… https://t.co/68nMJkiPsC
+ -- by elonmusk 
+
+5 - Falcon Heavy test flight currently scheduled for late summer
+ -- by elonmusk 
+
+6 - "Considering trying to bring upper stage back on Falcon Heavy demo flight for full reusability. Odds of success low, but maybe worth a shot."
+ -- by elonmusk 
+
+7 - Here is the latest SpaceX travel ad for the flight around the moon &amp; into deep space. Maybe needs a few edits ... https://t.co/mA8ZgutrbE
+ -- by elonmusk 
+
+8 - "If this is the only issue, flight would be fine, but need to make sure that it isn't symptomatic of a more significant upstream root cause"
+ -- by elonmusk 
+
+9 - Daylight rocket launch &amp; landing at the Cape this weekend. Will be the 1st SpaceX flight from the Apollo launch pad. https://t.co/Vr5LQjYaPZ
+ -- by elonmusk 
+
+10 - RT @Hyperloop: Watchlive now at https://t.co/CoIedEujWn as WARR Hyperloop team attempts their first flight in the @SpaceX Hyperloop test tr…
+ -- by elonmusk 
+
+11 - Thanks for the longstanding faith in SpaceX. We very much look forward to doing this milestone flight with you. https://t.co/U2UFez0OhY
+ -- by elonmusk 
+
+12 - "@SpaceX There was a tiny glitch in the motion of an upper stage engine actuator. Probably not a flight risk, but still worth investigating."
+ -- by elonmusk 
+
+13 - "@SchaFFFFFF Flight 24 is def capable of flying again, but it makes sense to apply ground delta qual to rocket w toughest entry conditions."
+ -- by elonmusk 
+
+14 - "Yeah, this was a three engine landing burn, so triple deceleration of last flight. That's important to minimize gravity losses."
+ -- by elonmusk 
+
+15 - F9 thrust at liftoff will be raised to 1.71M lbf later this year. It is capable of 1.9M lbf in flight.
+ -- by elonmusk 
+
+16 - Dragon 2 is designed to be able to land anywhere in the solar system. Red Dragon Mars mission is the first test flight.
+ -- by elonmusk 
+
+17 - "Rocket landed hard on the droneship. Didn't expect this one to work (v hot reentry), but next flight has a good chance."
+ -- by elonmusk 
+
+18 - Rounding up to 1 sec for a bit of timing margin. Updating flight computer command sequence …
+ -- by elonmusk 
+
+19 - Abort triggered by flight computer on upper stage throttle valve. Adjusting thresholds and restarting count at T-10 mins.
+ -- by elonmusk 
+
+20 - Jeff maybe unaware SpaceX suborbital VTOL flight began 2013. Orbital water landing 2014. Orbital land landing next. https://t.co/S6WMRnEFY5
+ -- by elonmusk 
+
+21 - "Expect to reach preliminary conclusions regarding last flight by end of week. Will brief key customers &amp; FAA, then post on our website."
+ -- by elonmusk 
+
+22 - Next landing attempt will be 3rd launch from now. Tonight's flight and following one will not have enough propellant.
+ -- by elonmusk 
+
+23 - RT @SpaceX: America’s next gen crewed spacecraft is almost ready for a test flight. Pad abort vehicle shipping to FL shortly. http://t.co/X…
+ -- by elonmusk 
+
+24 - RT @SpaceX: Updated animation of Falcon Heavy flight and booster recovery. Check it out: http://t.co/Y4OvdU8yQ5 http://t.co/LN7yRVAvkT
+ -- by elonmusk 
+
+25 - "Upcoming flight already has 50% more hydraulic fluid, so should have plenty of margin for landing attempt next month."
+ -- by elonmusk 
+
+26 - "The flight grid fins look like the ones on this test we did, but larger: https://t.co/gTaURQQeyx"
+ -- by elonmusk 
+
+27 - @John_Gardi Using legs as air brakes to drop terminal velocity in half requires slight redesign &amp; more data. Maybe flight 21.
+ -- by elonmusk 
+
+28 - Testing operation of hypersonic grid fins (x-wing config) going on next flight http://t.co/O1tMSIXxsT
+ -- by elonmusk 
+
+29 - Three engine F9R Dev1 vehicle auto-terminated during test flight. No injuries or near injuries. Rockets are tricky …
+ -- by elonmusk 
+
+30 - Falcon 9 flight 11 to geosynchronous transfer orbit completed on target this morning http://t.co/UoJMNOHTUR
+ -- by elonmusk 
+
+31 - Flight 10 of Falcon 9 was good. All six ORBCOMM satellites deployed on target.
+ -- by elonmusk 
+
+32 - Test flight of Falcon 9-R with deployable grid fins for better hypersonic thru subsonic control http://t.co/6ZXpvPao2u
+ -- by elonmusk 
+
+33 - "@RichardGarriott Just the air in Dragon. Technically, if a few humans had stowed aboard Dragon on the last flight, they would've been ok."
+ -- by elonmusk 
+
+34 - "Second flight of Falcon 9-R. 1000m, hover and land (with cows) http://t.co/tixmBH5sw6"
+ -- by elonmusk 
+
+35 - "Cover drops on May 29. Actual flight design hardware of crew Dragon, not a mockup."
+ -- by elonmusk 
+
+36 - Flight computers continued transmitting for 8 seconds after reaching the water. Stopped when booster went horizontal.
+ -- by elonmusk 
+
+37 - Hexacopter drone vid of 1st F9 rocket booster takeoff &amp; landing w flight design legs http://t.co/FhZX3afK1a
+ -- by elonmusk 
+
+38 - Mounting landing legs (~60 ft span) to Falcon 9 for next month's Space Station servicing flight http://t.co/zyfazr2BB2
+ -- by elonmusk 
+
+39 - Rough cut of Falcon 9 Thaicom flight http://t.co/aC3k4neWie
+ -- by elonmusk 
+
+40 - At Disney World w kids for traditional prelaunch visit (first good flight was after riding Space Mountain)
+ -- by elonmusk 
+
+41 - "Rocket flight to 744m, hover &amp; return to launch pad (close shot from hexacopter drone) http://t.co/vyJSUbZo2R"
+ -- by elonmusk 
+
+42 - "Between this flight &amp; Grasshopper tests, I think we now have all the pieces of the puzzle to bring the rocket back home."
+ -- by elonmusk 
+
+43 - "Same rocket flight, but this time with cows! http://t.co/qhF5JWzyCW"
+ -- by elonmusk 
+
+44 - "Latest rocket test flight: hard lateral deviation, stabilize &amp; hover, rapid descent back to pad http://t.co/Vb7ebiMdNJ"
+ -- by elonmusk 
+
+45 - "@ponder68 Carbon produced by a @SpaceX rocket flight is roughly equal to one 747 flight. No, we should not be exempt."
+ -- by elonmusk 
+
+46 - "@Alan_Nestos The legs are nested tight against the body of the rocket in flight, so rotate about 120 degrees to deploy"
+ -- by elonmusk 
+
+47 - Congrats to @VirginGalactic and @RichardBranson on supersonic test flight!
+ -- by elonmusk 
+
+48 - @dbhyslop Will post a video of the latest Grasshopper flight tomorrow (taken from the camera on our new hexacopter).
+ -- by elonmusk 
+
+49 - Congratulations to @OrbitalSciences! “@CNETNews: Orbital's Antares rocket makes successful test flight http://t.co/y7bwdDMGCi”
+ -- by elonmusk 
+
+50 - @Asherlaw SpaceX is expanding launch ops at Canaveral too. Need 2 locations to handle flight rate and avoid weather risk
+ -- by elonmusk 
+
+51 - "@EricIdle Cool! Btw, thought you might appreciate that 1st flight of Dragon spacecraft carried a large wheel of cheese :)"
+ -- by elonmusk 
+
+52 - "Did you know space ice cream only made it onto one flight? Turns out, it's gross. https://t.co/XJ6j5Qxktr https://t.co/92o7Z5i0iW"
+ -- by TEDTalks 
+
+53 - Scientists have been trying to replicate bird flight for years. This robot finally soars: https://t.co/fvbLimPlJs https://t.co/YOjQtKti0v
+ -- by TEDTalks 
+
+54 - RT @emcconover: Spotted a celebrity on my flight to Chicago! Much excitement ensued. @Fermilab https://t.co/mWxquk8b6r
+ -- by symmetrymag 
+
+55 - RT @myusuf3: Flight of the Developers. https://t.co/nRZPzu62V8
+ -- by pythonbot__ 
+
+/home/jack/Desktop/text_stuff/symmetrymag.txt
+
+savE = open('SavE.txt', 'w')
+
+savE.close()
+
+import markovify
+
+import time
+
+f = open("symmetrymag.txt")
+
+text = f.read()
+
+text_model_a = markovify.Text(text)
+
+​
+
+​
+
+ebook_b =open('elonmusk.txt')
+
+text0 = ebook_b.read()
+
+text_model_b = markovify.Text(text0)
+
+for i in range(5):
+
+    print(text_model_b.make_short_sentence(140))
+
+    STR0 = (text_model_b.make_short_sentence(140))
+
+    savE = open('SavE.txt', 'a')
+
+    savE.write(STR0)
+
+    savE.close()
+
+​
+
+# 2. Print five randomly-generated sentences
+
+for i in range(5):
+
+    print(text_model_a.make_short_sentence(140))
+
+    STR = (text_model_a.make_short_sentence(140))
+
+    savE = open('SavE.txt', 'a')
+
+    savE.write(STR)
+
+    savE.close()
+
+# 3. Print three randomly-generated sentences of no more than 140 characters
+
+for i in range(5):
+
+    print(text_model_a.make_short_sentence(140))
+
+    STR2 = (text_model_a.make_short_sentence(140))
+
+    savE = open('SavE.txt', 'a')
+
+    savE.write(STR2)
+
+    savE.close()
+
+# Combine the models into a single one
+
+both_models = markovify.combine([text_model_a,text_model_b])
+
+for i in range(5):
+
+    print(both_models.make_short_sentence(140))    
+
+    STR3 = (both_models.make_short_sentence(140))  
+
+    savE = open('SavE.txt', 'a')
+
+    savE.write(STR3)
+
+    savE.close()    
+
+Guardians of the SpaceX Hyperloop competition.
+Upgrades underway to enable rocket to compensate for a special category for EVs.
+Heavy gust or something else.
+Really should be worth seeing.
+Doesn't sound like they are in Norway and we have ever had in 14 years.
+Smashing all of the #darkmatter!
+Ask Risa Wechsler tomorrow at noon Central #AskSymmetry #ICHEP2016 https://t.co/mVH6Ww6Iv7 ICYMI: The LHC is almost ready for physics!
+We never get enough quarks?
+What questions do you have for Tulika about the prevailing model for the #DEAP3600 experiment!
+Paper to be left-handed: http://t.co/CwEqoohAqy This week's top tweet: Time to do some physics!
+RT @PlanetSizeMe: This is super strange but appears to be left-handed: http://t.co/CwEqoohAqy @bertmorrien Thanks for the ICARUS experiment.
+Check out our timeline of the W bosons to be true.
+We added a high-resolution version in the data: via @symmetrymag DYK?
+Cosmologist @RisaWechsler is a neutrino?
+Next round begins tomorrow: http://t.co/FsRJJRND4v RT @Fermilab: Cool to see physicists too!
+One of the goals of AMS is to look forward to delivering the goods!
+That was what took the SpaceX/Tesla Hyperloop pusher pod for a diff reason.
+Paper to be close to the @Space_Station http://t.co/0KGddcVzV0 http://t.co/7F… Welcome @Chiefboltkennyh to @TeslaMotors.
+MT said everything had to be released… RT @Space_Station: .@SpaceX gets ready for Halloween?
+@CMaggiore50 Typing Mars after holding down the T symbol on the site: A goldmine of scientific knowledge?
+
+python edit a line in a file
+
+import fileinput
+
+​
+
+import fileinput
+
+​
+
+for line in fileinput.input("file.txt", inplace=True):
+
+    print line[0]
+
+    #print "%d: %s" % (fileinput.filelineno(), 4, 'zzzzzzzzzzz'),
+
+---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+<ipython-input-58-e9104075bab1> in <module>()
+      1 import fileinput
+      2 
+----> 3 for line in fileinput.input("file.txt", inplace=True):
+      4     print line[0]
+      5     #print "%d: %s" % (fileinput.filelineno(), 4, 'zzzzzzzzzzz'),
+
+/home/jack/anaconda2/lib/python2.7/fileinput.pyc in input(files, inplace, backup, bufsize, mode, openhook)
+     93     global _state
+     94     if _state and _state._file:
+---> 95         raise RuntimeError, "input() already active"
+     96     _state = FileInput(files, inplace, backup, bufsize, mode, openhook)
+     97     return _state
+
+RuntimeError: input() already active
+
+with open("Use.txt",'r') as f:
+
+    get_all=f.readlines()
+
+​
+
+Edit a Text File with Python
+
+with open("sample.txt",'r') as f:
+
+    get_all=f.readlines()
+
+with open("file.txt",'w') as f:
+
+    for i,line in enumerate(get_all,1): # Start counting lines at 1    
+
+        if i == 3:                      # overwrite line 3
+
+            f.writelines("This is my new TEXT on line three.\n")
+
+            #you may also add more lines
+
+            f.writelines("This is another line added under the first.\n") 
+
+        else:
+
+            f.writelines(line)
+
+f.close()            
+
+%%writefile sample.txt
+
+The general rule is satisfied if they are reminded.
+
+Some people are exceeding graciousness at the table. 
+
+Those people are fewer in number.
+
+Long, low masses of dust show the soldiers ground beforehand.
+
+Overwriting sample.txt
+
+# %load file.txt
+
+The general rule is satisfied if they are reminded.
+
+Some people are exceeding graciousness at the table. 
+
+This is my new TEXT on line three.
+
+This is another line added under the first.
+
+Long, low masses of dust show the soldiers ground beforehand.
+
+To insert a snippet past it between triple apostrophies
+
+import sqlite3
+
+import base64
+
+#Connect to database: 
+
+conn = sqlite3.connect('snippet.db')
+
+c = conn.cursor()
+
+#Single lines do not need the three quotes
+
+file = """
+
+import Key
+
+from random import randint
+
+​
+
+#Twitter API credentials
+
+consumer_key = Key.twiter()[0]
+
+consumer_secret = Key.twiter()[1]
+
+access_key = Key.twiter()[2]
+
+access_secret = Key.twiter()[3]
+
+​
+
+def get_all_tweets(screen_name):
+
+    #Twitter only allows access to a users most recent 3240 tweets with this method
+
+​
+
+    #authorize twitter, initialize tweepy
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+
+    auth.set_access_token(access_key, access_secret)
+
+    api = tweepy.API(auth)
+
+"""
+
+encodedlistvalue=base64.b64encode(file)
+
+b = 'Key , using Key.py, using Key, API key'
+
+c.execute("INSERT INTO snippet VALUES (?,?,?)", (encodedlistvalue, file, b))
+
+conn.commit()
+
+conn.close()
+
+​
+
+import sqlite3
+
+import sys
+
+conn = sqlite3.connect('snippet.db')
+
+conn.text_factory = str
+
+c = conn.cursor()
+
+count=0
+
+req=200
+
+search = raw_input("Search : ")
+
+for row in c.execute('SELECT * FROM snippet WHERE keywords MATCH ?', (search,)):    
+
+    count=count+1
+
+    #print count,"by",(row)[2],"\n",(row)[1],"\n"
+
+    print count,"-",(row)[1]," -- by",(row)[2],"\n"
+
+    if count > req:
+
+        conn.close()
+
+        sys.exit()
+
+SearchKey
+1 - 
+%%writefile Key.py
+def twiter():
+    CONSUMER_KEY = 'WWWWWWWWWWWWWWWW'
+    CONSUMER_SECRET = 'XXXXXXXXXXXXXXXXX'
+    ACCESS_KEY = 'YYYYYYYYYYYYYYYYYYY'
+    ACCESS_SECRET = 'ZZZZZZZZZZZZZZZZ'
+    twir = (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+    return twir
+ -- by Key, Key.py, twitter api, Twitter API 
+
+2 - 
+import Key
+from random import randint
+
+#Twitter API credentials
+consumer_key = Key.twiter()[0]
+consumer_secret = Key.twiter()[1]
+access_key = Key.twiter()[2]
+access_secret = Key.twiter()[3]
+
+
+def get_all_tweets(screen_name):
+    #Twitter only allows access to a users most recent 3240 tweets with this method
+
+    #authorize twitter, initialize tweepy
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_key, access_secret)
+    api = tweepy.API(auth)
+
+ -- by Key , using Key.py, using Key, API key 
+
+Searches of 'snippet.db' return formated
+code that can be cut and pasted
+
+import sqlite3
+
+import base64
+
+conn = sqlite3.connect('snippet.db')
+
+conn.text_factory = str
+
+c = conn.cursor()# Never 
+
+for row in c.execute('SELECT rowid, base64, text, \
+
+keywords FROM snippet ORDER BY ROWID'):    
+
+        # display as asci instead of unicode
+
+        s2 = row[1].encode('ascii')
+
+        #decode the base64 stored data
+
+        encodedlistvalue=base64.b64decode(s2)
+
+        print row[0],"\n",encodedlistvalue, '\n', \
+
+        '\nKeywords:',row[3],'\n -----------------------------\n'
+
+1 
+
+delimiters = ['\n', ' ', ',', '.', '?', '!', ':', 'and_what_else_you_need']
+words = content
+for delimiter in delimiters:
+    new_words = []
+    for word in words:
+        new_words += word.split(delimiter)
+    words = new_words
+
+
+Keywords: words, delimiter, split 
+ -----------------------------
+
+2 
+
+def insert_info(store):
+    with sqlite3.connect("misc.db") as db:
+        #use a text_factory that can interpret 8-bit bytestrings 
+        db.text_factory = str
+        cursor = db.cursor()
+        #db.text_factory = str
+        sql = "insert into storeit (data0, data1, data2) values (?, ?, ?)"
+        cursor.execute(sql, store)
+        db.commit()
+        
+        OR
+        conn.text_factory = str
+
+
+Keywords: text_factory, 8-bit bytestrings, 8-bit 
+ -----------------------------
+
+3 
+
+import sqlite3
+import sys
+conn = sqlite3.connect('snippet.db')
+conn.text_factory = str
+c = conn.cursor()
+count=0
+req=200
+search = raw_input("Search")
+#for row in c.execute('SELECT rowid,* FROM tweets WHERE text MATCH %s' % search):
+for row in c.execute('SELECT * FROM snippet WHERE keywords MATCH ?', (search,)):    
+    count=count+1
+    #print count,"by",(row)[2],"
+",(row)[1],"
+"
+    print count,"-",(row)[1]," -- by",(row)[2],"
+"
+    if count > req:
+        conn.close()
+        sys.exit()
+
+
+Keywords: text_factory, 8-bit bytestrings, 8-bit 
+ -----------------------------
+
+4 
+
+with open("Use.txt",'r') as f:
+    get_all=f.readlines()
+
+----------------
+with open("file.txt",'w') as f:
+    for i,line in enumerate(get_all,1):  ## STARTS THE NUMBERING FROM 1 (by default it begins with 0)    
+        if i == 2:                       ## OVERWRITES line:2
+            f.writelines("XXXXXXXXXXXXXXXXXXXXXXX
+")
+        else:
+            f.writelines(line)
+
+
+Keywords: enumerate, edit line, edit, edit line number 
+ -----------------------------
+
+5 
+
+%%writefile Key.py
+def twiter():
+    CONSUMER_KEY = 'WWWWWWWWWWWWWWWW'
+    CONSUMER_SECRET = 'XXXXXXXXXXXXXXXXX'
+    ACCESS_KEY = 'YYYYYYYYYYYYYYYYYYY'
+    ACCESS_SECRET = 'ZZZZZZZZZZZZZZZZ'
+    twir = (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+    return twir
+
+
+Keywords: Key, Key.py, twitter api, Twitter API 
+ -----------------------------
+
+6 
+
+from itertools import tee
+count=0
+with open("symmetrymag_tweets.csv") as inf:
+    for line in inf:
+        lines  = line[39:]
+        outf = open("symmetrymag.txt", "a") 
+        outf.write(lines)
+outf.close() 
+
+
+Keywords: CSV, clean csv, edit csv, prepare for database 
+ -----------------------------
+
+7 
+
+search = raw_input("find : ")
+file = open("symmetrymag.txt")
+lines = file.readlines()
+for line in lines:
+    if search in line:print line
+    if search == True:
+        file.close()
+        exit()
+file.close()
+
+
+
+Keywords: search, search text file, textfile, edit textfile 
+ -----------------------------
+
+8 
+
+import sqlite3
+import time
+#account = "TEDTalks.txt"
+account = "symmetrymag.txt"
+#account = "elonmusk.txt"
+#account = "realDonaldTrump.txt"
+user = account[:-4]
+lines = open(account,"r")
+line = lines.readline()
+for line in lines:
+    conn = sqlite3.connect('collection.db')
+    conn.text_factory = str
+    c = conn.cursor()
+    c.execute("INSERT INTO tweets VALUES (?,?)", (line, user)) 
+    conn.commit()
+    conn.close()        
+    
+    #print line         
+
+conn.commit()
+conn.close()                 
+
+
+Keywords: insert data, text file to database, text to data 
+ -----------------------------
+
+9 
+
+import Key
+from random import randint
+
+#Twitter API credentials
+consumer_key = Key.twiter()[0]
+consumer_secret = Key.twiter()[1]
+access_key = Key.twiter()[2]
+access_secret = Key.twiter()[3]
+
+
+def get_all_tweets(screen_name):
+    #Twitter only allows access to a users most recent 3240 tweets with this method
+
+    #authorize twitter, initialize tweepy
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_key, access_secret)
+    api = tweepy.API(auth)
+
+
+
+Keywords: Key , using Key.py, using Key, API key 
+ -----------------------------
+
+import sqlite3
+
+import base64
+
+conn = sqlite3.connect('snippet.db')
+
+conn.text_factory = str
+
+c = conn.cursor()# Never 
+
+for row in c.execute('SELECT rowid, base64, text, keywords FROM snippet ORDER BY ROWID'):    
+
+        # display as asci instead of unicode
+
+        s2 = row[1].encode('ascii')
+
+        #decode the base64 stored data
+
+        encodedlistvalue=base64.b64decode(s2)
+
+        print row[0],"\n",encodedlistvalue, '\n', '\nKeywords:',row[3],'\n -----------------------------\n'
+
+1 
+
+delimiters = ['\n', ' ', ',', '.', '?', '!', ':', 'and_what_else_you_need']
+words = content
+for delimiter in delimiters:
+    new_words = []
+    for word in words:
+        new_words += word.split(delimiter)
+    words = new_words
+
+
+Keywords: words, delimiter, split 
+ -----------------------------
+
+2 
+
+def insert_info(store):
+    with sqlite3.connect("misc.db") as db:
+        #use a text_factory that can interpret 8-bit bytestrings 
+        db.text_factory = str
+        cursor = db.cursor()
+        #db.text_factory = str
+        sql = "insert into storeit (data0, data1, data2) values (?, ?, ?)"
+        cursor.execute(sql, store)
+        db.commit()
+        
+        OR
+        conn.text_factory = str
+
+
+Keywords: text_factory, 8-bit bytestrings, 8-bit 
+ -----------------------------
+
+3 
+
+import sqlite3
+import sys
+conn = sqlite3.connect('snippet.db')
+conn.text_factory = str
+c = conn.cursor()
+count=0
+req=200
+search = raw_input("Search")
+#for row in c.execute('SELECT rowid,* FROM tweets WHERE text MATCH %s' % search):
+for row in c.execute('SELECT * FROM snippet WHERE keywords MATCH ?', (search,)):    
+    count=count+1
+    #print count,"by",(row)[2],"
+",(row)[1],"
+"
+    print count,"-",(row)[1]," -- by",(row)[2],"
+"
+    if count > req:
+        conn.close()
+        sys.exit()
+
+
+Keywords: text_factory, 8-bit bytestrings, 8-bit 
+ -----------------------------
+
+4 
+
+with open("Use.txt",'r') as f:
+    get_all=f.readlines()
+
+----------------
+with open("file.txt",'w') as f:
+    for i,line in enumerate(get_all,1):  ## STARTS THE NUMBERING FROM 1 (by default it begins with 0)    
+        if i == 2:                       ## OVERWRITES line:2
+            f.writelines("XXXXXXXXXXXXXXXXXXXXXXX
+")
+        else:
+            f.writelines(line)
+
+
+Keywords: enumerate, edit line, edit, edit line number 
+ -----------------------------
+
+5 
+
+%%writefile Key.py
+def twiter():
+    CONSUMER_KEY = 'WWWWWWWWWWWWWWWW'
+    CONSUMER_SECRET = 'XXXXXXXXXXXXXXXXX'
+    ACCESS_KEY = 'YYYYYYYYYYYYYYYYYYY'
+    ACCESS_SECRET = 'ZZZZZZZZZZZZZZZZ'
+    twir = (CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
+    return twir
+
+
+Keywords: Key, Key.py, twitter api, Twitter API 
+ -----------------------------
+
+6 
+
+from itertools import tee
+count=0
+with open("symmetrymag_tweets.csv") as inf:
+    for line in inf:
+        lines  = line[39:]
+        outf = open("symmetrymag.txt", "a") 
+        outf.write(lines)
+outf.close() 
+
+
+Keywords: CSV, clean csv, edit csv, prepare for database 
+ -----------------------------
+
+7 
+
+search = raw_input("find : ")
+file = open("symmetrymag.txt")
+lines = file.readlines()
+for line in lines:
+    if search in line:print line
+    if search == True:
+        file.close()
+        exit()
+file.close()
+
+
+
+Keywords: search, search text file, textfile, edit textfile 
+ -----------------------------
+
+8 
+
+import sqlite3
+import time
+#account = "TEDTalks.txt"
+account = "symmetrymag.txt"
+#account = "elonmusk.txt"
+#account = "realDonaldTrump.txt"
+user = account[:-4]
+lines = open(account,"r")
+line = lines.readline()
+for line in lines:
+    conn = sqlite3.connect('collection.db')
+    conn.text_factory = str
+    c = conn.cursor()
+    c.execute("INSERT INTO tweets VALUES (?,?)", (line, user)) 
+    conn.commit()
+    conn.close()        
+    
+    #print line         
+
+conn.commit()
+conn.close()                 
+
+
+Keywords: insert data, text file to database, text to data 
+ -----------------------------
+
+9 
+
+import Key
+from random import randint
+
+#Twitter API credentials
+consumer_key = Key.twiter()[0]
+consumer_secret = Key.twiter()[1]
+access_key = Key.twiter()[2]
+access_secret = Key.twiter()[3]
+
+
+def get_all_tweets(screen_name):
+    #Twitter only allows access to a users most recent 3240 tweets with this method
+
+    #authorize twitter, initialize tweepy
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_key, access_secret)
+    api = tweepy.API(auth)
+
+
+
+Keywords: Key , using Key.py, using Key, API key 
+ -----------------------------
+
+10 
+
+conn = GetSqliteConnection(db_path)
+conn.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
+
+
+Keywords: text_factory , utf-8, unicode, lambda 
+ -----------------------------
+
+11 
+
+%%writefile /home/jack/hidden/Authorize.py
+def keys():
+    ftp = "ftp.MYsite.com"
+    username = "Josephine"
+    password = "WhaWah2525"
+    login = (ftp,username,password)
+    return login
+    ------------
+import sys
+sys.path.insert(0, "/home/jack/hidden"
+import Authorize
+ftp = Authorize.keys()[0]
+username = Authorize.keys()[1]
+password = Authorize.keys()[2]
+
+print ftp, username, password    
+    
+
+
+Keywords: Authorize, ftp, hidden passwords, Authorize.keys 
+ -----------------------------
+
+12 
+
+!sqlite3 ipydb.db "pragma integrity_check;"
+
+
+Keywords: verify database, pragma, integrity_check, check database 
+ -----------------------------
+
+13 
+
+import base64
+string="This is the text above Encoded Base64"
+encodedlistvalue=base64.b64encode(string)
+
+string = encodedlistvalue
+print encodedlistvalue,"
+",base64.b64decode(string)
+
+
+Keywords: base64, encoding base64, decoding base64, Encoded Base64 
+ -----------------------------
+
+14 
+
+import base64 #encode muliple lines and keep the format
+string = 
+╲╲╭━━━━━━━╮╱╱
+╲╭╯╭━╮┈╭━╮╰╮╱
+╲┃┈┃┈▊┈┃┈▊┈┃╱
+╲┃┈┗━┛┈┗━┛┈┃╱
+╱┃┈┏━━━━━┓┈┃╲
+╱┃┈┃┈┈╭━╮┃┈┃╲
+╱╰╮╰━━┻━┻╯╭╯╲
+╱╱╰━━━━━━━╯╲╲ FROM: http://copy.r74n.com/ascii-art
+EncodedStringValue=base64.b64encode(string)
+string2 = EncodedStringValue
+print "Decoded String2 : ",base64.b64decode(string2)
+
+
+Keywords: base64, encoding base64, decoding base64, Encoded Base64 
+ -----------------------------
+
+15 
+
+import sqlite3
+conn = sqlite3.connect('ipydb.db')
+c = conn.cursor()# Never 
+for row in c.execute('SELECT * FROM python ORDER BY code'):
+        print"entry :",(row[0]).encode('ascii'),"
+"
+        print"keywords :",(row[1]).encode('ascii'),"
+-----
+","
+"  
+        #data = c.fetchall()
+        #print data
+
+
+Keywords: ascii, encode('ascii'), fetchall, sqlite3 
+ -----------------------------
+
+16 
+
+import sqlite3
+import feedparser
+import time
+import sqlite3
+Dbase = 'bigfeedfts.db'
+conn = sqlite3.connect(Dbase)
+c = conn.cursor()
+c.execute(
+CREATE VIRTUAL TABLE IF NOT EXISTS bbctech 
+USING FTS3(head, feed);
+)
+count=0
+while count<35:
+    count=count+1
+    if count==1:feed='http://feeds.bbci.co.uk/news/technology/rss.xml'
+    if count==2:feed='http://www.cbn.com/cbnnews/us/feed/'
+    d = feedparser.parse(feed)
+    for post in d.entries:
+        aa = `d['feed']['title'],d['feed']['link'],d.entries[0]['link']`
+        bb = `post.title + ": " + post.link + ""`
+        conn = sqlite3.connect(Dbase)
+        c = conn.cursor()
+        c.execute("INSERT INTO bbctech VALUES (?,?)", (aa,bb))
+        conn.commit()
+        conn.close()
+        
+        
+conn = sqlite3.connect(Dbase)
+c = conn.cursor()# Never
+count=0
+for row in c.execute('SELECT * FROM bbctech ORDER BY rowid DESC'):
+    row=str(row)
+    row=row.replace("(u","");row=row.replace('", u"u',"
+")
+    row=row.replace("/', u'","   ");row=row.replace('"',"")
+    row=row.replace("', u'","  ");row=row.replace("')","  ")
+    row=row.replace("'","");row=row.replace("  , uu","
+")
+    count=count+1
+    print"
+Number :",count," -----
+",(row)
+
+
+Keywords: rss, RSS, rss feeds, sqlite3 
+ -----------------------------
+
+17 
+
+import sqlite3
+import sys
+conn = sqlite3.connect('bigfeedfts.db')
+c = conn.cursor()
+count=0
+# Limited Amount of Results to 100
+req=100
+term = raw_input("Search Term : ")
+for row in c.execute("SELECT * FROM bbctech WHERE feed MATCH ?", (term,)):
+    row=str(row)
+    row=row.replace("(u"(u","");row=row.replace("', u'","  ");
+    row=row.replace("u'"," ");row=row.replace(')", u" ', "
+");
+    row=row.replace(" http://","
+http://");row=row.replace('")','')
+    row=row.replace("'","");row=row.replace("#tk.rss_all", "")
+    count=count+1
+    print "
+",count,"-----
+",(row)
+    if count > req:
+        conn.close()
+        sys.exit()
+
+
+Keywords: search rss, RSS, rss feeds, search sqlite3 
+ -----------------------------
+
+18 
+
+#This is a great search
+#Much better that a regular browser search. 
+#This search keeps a google page that may be scrapedor gleaned or just used as a hyperlink documant. 
+#Results are fantastic.
+from bs4 import BeautifulSoup
+import requests
+url = u'https://www.google.com/search?num=30&newwindow=1&client=ubuntu&channel=fs&btnG=Search&q='
+query = u'Trump, idiot '
+r = requests.get(url+query)
+soup = BeautifulSoup(r.text, 'html.parser')
+for list in soup:
+    print list
+text = str(list)
+html_str = text
+Html_file= open("filename4.html","w")
+Html_file.write(html_str)
+Html_file.close()#This is a great search
+#Much better that a regular browser search. 
+#This search keeps a google page that may be scrapedor gleaned or just used as a hyperlink documant. 
+#Results are fantastic.
+from bs4 import BeautifulSoup
+import requests
+url = u'https://www.google.com/search?num=30&newwindow=1&client=ubuntu&channel=fs&btnG=Search&q='
+query = u'Trump, idiot '
+r = requests.get(url+query)
+soup = BeautifulSoup(r.text, 'html.parser')
+for list in soup:
+    print list
+text = str(list)
+html_str = text
+Html_file= open("filename4.html","w")
+Html_file.write(html_str)
+Html_file.close()
+-----
+READ THE HTML
+from lxml import html
+print html.parse('filename4.html').xpath('//body')[0].text_content()
+
+
+Keywords: google search, parse html, html, read html 
+ -----------------------------
+
+19 
+
+from PIL import Image, ImageFont
+import GenIm
+
+img = Image.open('tmmpp/HURRICANE_01.png')
+position = (340,600)
+text= "JackNorthrup_ImageBot"
+font = ImageFont.truetype("/home/jack/.fonts/Exo-Black.ttf", 25)
+col = (255,255,255,150)
+halo_col = (0,0,0)
+newim = GenIm.Draw_text_with_halo(img, position, text, font, col, halo_col)
+newim.save("tmmpp/HURRICANE_02.png")
+!showme tmmpp/HURRICANE_02.png
+
+
+Keywords: text on an image, image, text image, text, words on image 
+ -----------------------------
+
+20 
+
+from itertools import tee
+count=0
+with open("realDonaldTrump_tweets.csv") as inf:
+    # set up iterators
+    cfg,res = tee(inf)
+    # advance cfg by four lines
+    for i in range(4):
+        next(cfg)
+
+    for c,r in zip(cfg, res):
+        count=count+1
+        if "campaign" in c:
+            #print "Date :",c[21:]
+            print c[39:]
+
+
+Keywords: cvs, remove characters, text edit, clean, clean text 
+ -----------------------------
+
+21 
+
+import tweepy #https://github.com/tweepy/tweepy
+import csv
+import sys
+sys.path.insert(0,"/home/jack/anaconda2/envs/py27/lib/python2.7/site-packages")
+import Key
+from random import randint
+consumer_key = Key.twiter()[0]
+consumer_secret = Key.twiter()[1]
+access_key = Key.twiter()[2]
+access_secret = Key.twiter()[3]
+
+def get_all_tweets(screen_name):
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_key, access_secret)
+    api = tweepy.API(auth)
+    alltweets = []	
+    new_tweets = api.user_timeline(screen_name = screen_name,count=200)
+    alltweets.extend(new_tweets)
+    oldest = alltweets[-1].id - 1
+    while len(new_tweets) > 0:
+        print "getting tweets before %s" % (oldest)
+        new_tweets = api.user_timeline(screen_name = screen_name,count=200,max_id=oldest)
+        alltweets.extend(new_tweets)
+        oldest = alltweets[-1].id - 1
+        print (len(alltweets))
+        if (len(alltweets)) >200:
+            outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
+            with open('%s_tweets.csv' % screen_name, 'wb') as f:
+                writer = csv.writer(f)
+                writer.writerow(["id","created_at","text"])
+                writer.writerows(outtweets)
+            pass
+if __name__ == '__main__':
+    USER = raw_input("User  : ") or "CNN"
+    get_all_tweets(USER)
+---  
+get all tweets, csv, get many tweets, tweets to csv, tweets.csv    
+
+
+Keywords: get all tweets, csv, get many tweets, tweets to csv, tweets.csv 
+ -----------------------------
+
+22 
+
+# TOP ONE IS BEST
+textin= open('hashtag.txt', 'r')
+lines = textin.readlines()
+for line in lines:
+    time.sleep(1)
+    print line
+---
+import time
+textin= open('hashtag.txt', 'r')
+lines = textin.read()
+time.sleep(1)
+print lines,
+---
+textin= open('hashtag.txt', 'r')
+lines = textin.read().splitlines()
+time.sleep(1)
+print lines,
+---
+read line by line, read(), splitlines(), read().splitlines(), read files    
+
+
+Keywords: read line by line, read(), splitlines(), read().splitlines(), read files 
+ -----------------------------
+
+23 
+
+import markovify
+f = open("grimm.txt")
+text = f.read()
+text_model_a = markovify.Text(text)
+
+
+ebook_b =open('hekel.txt')
+text0 = ebook_b.read()
+text_model_b = markovify.Text(text0)
+for i in range(5):
+    print(text_model_b.make_short_sentence(140))
+    STR0 = (text_model_b.make_short_sentence(140))
+    savE = open('savE.txt', 'a')
+    savE.write(STR0)
+    savE.close()
+
+# 2. Print five randomly-generated sentences
+for i in range(5):
+    print(text_model_a.make_short_sentence(140))
+    STR = (text_model_a.make_short_sentence(140))
+    savE = open('savE.txt', 'a')
+    savE.write(STR)
+    savE.close()
+# 3. Print three randomly-generated sentences of no more than 140 characters
+for i in range(5):
+    print(text_model_a.make_short_sentence(140))
+    STR2 = (text_model_a.make_short_sentence(140))
+    savE = open('savE.txt', 'a')
+    savE.write(STR2)
+    savE.close()
+# Combine the models into a single one
+both_models = markovify.combine([text_model_a,text_model_b])
+for i in range(5):
+    print(both_models.make_short_sentence(140))    
+    STR3 = (both_models.make_short_sentence(140))  
+    savE = open('savE.txt', 'a')
+    savE.write(STR3)
+    savE.close()    
+---
+markovify , combine , text_model_a ,
+
+
+Keywords: markovify, combine, text_model_a, markovify, generated sentences 
+ -----------------------------
+
+24 
+
+Using shutil
+
+from shutil import copyfile
+copyfile(src, dst)
+----
+# Python Copy File - Sample Code
+from shutil import copyfile
+from sys import exit
+source = input("Enter source file with full path: ")
+target = input("Enter target file with full path: ")
+# adding exception handling
+try:
+    copyfile(source, target)
+except IOError as e:
+    print("Unable to copy file. %s" % e)
+    exit(1)
+except:
+    print("Unexpected error:", sys.exc_info())
+    exit(1)
+print("
+File copy done!
+")
+while True:
+    print("Do you like to print the file ? (y/n): ")
+    check = input()
+    if check == 'n':
+        break
+    elif check == 'y':
+        file = open(target, "r")
+        print("
+Here follows the file content:
+")
+        print(file.read())
+        file.close()
+        print()
+        break
+    else:
+        continue
+
+
+Keywords: copy, copy file, copy a file, from shutil import copyfile, shutil, copyfile 
+ -----------------------------
+
+25 
+
+how to turn on the keyboard backlight
+
+USE:   xset led on
+
+keyboard backlight
+
+
+Keywords: how to turn on backlight, turn on backlight, keyboard backlight, keyboard, backlight 
+ -----------------------------
+
+26 
+
+import sqlite3
+import os.path
+from os import listdir, getcwd
+from IPython.core.display import Image 
+
+def get_picture_list(rel_path):
+    abs_path = os.path.join(os.getcwd(),rel_path)
+    print 'abs_path =', abs_path
+    dir_files = os.listdir(abs_path)
+    #print dir_files
+    return dir_files
+
+picture_list = get_picture_list('snippets')
+print picture_list
+------------
+get_picture_list, get list of files, get a file list in memory
+files in memeory , file list memory 
+
+
+Keywords: get_picture_list, get list of files, get a file list in memory 
+ -----------------------------
+
+27 
+
+import sqlite3
+import sys
+conn = sqlite3.connect('pdfs.db')
+conn.text_factory = str
+c = conn.cursor()
+count=0;req=200
+search = raw_input("Search : ")
+for row in c.execute('SELECT rowid, text FROM pdfs WHERE text MATCH ?', (search,)):    
+    count=count+1
+    print (row)[0],"-",(row)[1],
+    if count > req:
+        conn.close()
+        sys.exit()
+        
+ --------
+ search database, search db, raw_input, SQLite search
+        
+
+
+Keywords: search database, search db, raw_input, SQLite search 
+ -----------------------------
+
+28 
+
+Creating a MySQL database with Python
+If you don't have it you may need:
+sudo apt-get install libmysqlclient-dev
+
+# Works
+import MySQLdb as db
+con = db.connect("localhost","root","")
+cur = con.cursor()
+cur.execute('CREATE DATABASE searchdb01;')
+
+
+
+Keywords: MySQL, Creating a MySQL database, libmysqlclient-dev, searchdb01 
+ -----------------------------
+
+29 
+
+# works 
+import MySQLdb as db
+import json 
+import base64
+    
+con = db.connect("localhost","root","ThinkPadT$#", "searchdb01")
+file = ""[mylist.jsn
+while 1:
+    line = file.readline()
+    if not line:
+        break
+    pass # do something 
+#listname='mylist.json'
+#stringlistvalue=json.dumps(listname)
+""
+keywords = ""
+database, code, python, lesson 1, Oh234
+""
+encodedlistvalue=base64.b64encode(file)
+with con:
+    cur = con.cursor()
+    cur.execute("CREATE TABLE Code(Id INT PRIMARY KEY AUTO_INCREMENT,                   Name VARCHAR(2500), Keywords VARCHAR(500))")
+    #cur.execute("INSERT INTO Code(Name) VALUES('%s')" % (encodedlistvalue))
+    cur.execute("INSERT INTO Code(Name, Keywords) VALUES('%s','%s')" % (encodedlistvalue, keywords))
+
+
+Keywords: MySQL, Creating a MySQL database, libmysqlclient-dev, searchdb01 
+ -----------------------------
+
+30 
+
+#!/usr/bin/python
+import MySQLdb
+import sys
+import base64
+con = db.connect("localhost","root"," ", "searchdb01")
+cur = con.cursor()
+# execute the SQL query using execute() method.
+cur.execute ("select Id, Name, Keywords from Code")
+
+data = cur.fetchall ()
+# print the rows
+for row in data :
+    encodedlistvalue=base64.b64decode(row[1])
+    print row[0], encodedlistvalue, '
+', 'Keywords:', row[2],    '
+ -----------------------------
+'
+# close the cursor object
+cur.close ()
+# close the connection
+con.close ()
+# exit the program
+sys.exit()
+
+
+Keywords: MySQL, base64 , b64decode, libmysqlclient-dev, searchdb01 
+ -----------------------------
+
+31 
+
+import MySQLdb
+con = db.connect("localhost","root","ThinkPadT$#", "searchdb01")
+
+param = "lesson"
+c = con.cursor()
+c.execute("SELECT * FROM Code WHERE Keywords LIKE %s LIMIT 1", ("%" + param + "%",))
+
+data = c.fetchall()
+for row in data :
+    encodedlistvalue=base64.b64decode(row[1])
+    print row[0], encodedlistvalue, '
+', 'Keywords:', row[2],    '
+ -----------------------------
+'
+c.close()
+
+
+Keywords: MySQL, base64 , b64decode, libmysqlclient-dev, searchdb01 
+ -----------------------------
+
+32 
+
+def createdb(dbnew):
+    import sqlite3
+    conn = sqlite3.connect(dbnew)
+    c = conn.cursor()
+  
+    query1 = "DROP TABLE IF EXISTS Junk"
+    query2 = ""CREATE TABLE IF NOT EXISTS Junk(
+    "language" VARCHAR(32) NOT NULL,
+    "keywords" VARCHAR(500) default NULL,
+    "script" VARCHAR(2500) default NULL
+    )
+    ""
+    c.execute(query1)
+    c.execute(query2)
+    
+dbnew = "newdb.db"    
+createdb(dbnew)    
+
+
+Keywords: function to create a database, function, database function  
+ -----------------------------
+
+33 
+
+import sqlite3
+import os.path
+from os import listdir, getcwd
+from IPython.core.display import Image 
+
+def get_picture_list(rel_path):
+    abs_path = os.path.join(os.getcwd(),rel_path)
+    print 'abs_path =', abs_path
+    dir_files = os.listdir(abs_path)
+    #print dir_files
+    return dir_files
+
+picture_list = get_picture_list('snippets')
+print picture_list
+import sqlite3
+import os.path
+from os import listdir, getcwd
+from IPython.core.display import Image 
+
+def create_or_open_db(db_file):
+    db_is_new = not os.path.exists(db_file)
+    conn = sqlite3.connect(db_file)
+    if db_is_new:
+        print 'Creating schema'
+        sql = '''create table if not exists PICTURES(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        PICTURE BLOB,
+        TYPE TEXT,
+        FILE_NAME TEXT);'''
+        conn.execute(sql) # shortcut for conn.cursor().execute(sql)
+    else:
+        print 'Schema exists
+'
+    return conn
+
+def insert_picture(picture_file):
+    with open(picture_file, 'rb') as input_file:
+        conn = sqlite3.connect(dbname)
+        c = conn.cursor()
+        ablob = input_file.read()
+        base=os.path.basename(picture_file)
+        afile, ext = os.path.splitext(base)
+        sql = '''INSERT INTO PICTURES
+        (PICTURE, TYPE, FILE_NAME)
+        VALUES(?, ?, ?);'''
+        c.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
+        conn.commit()
+
+def loadimages(dbname, path):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    #conn.execute("DELETE FROM PICTURES")
+    for fn in picture_list:
+        picture_file = path+"/"+fn
+        insert_picture(picture_file)
+
+    for r in c.execute("SELECT rowid, FILE_NAME FROM PICTURES"):
+        print r[0],r[1]
+   
+    conn.commit()
+
+
+def get_image(picture_id):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    c.execute("SELECT PICTURE, TYPE, FILE_NAME FROM PICTURES WHERE id = ?;",(picture_id,))
+    #sql = "SELECT PICTURE, TYPE, FILE_NAME FROM PICTURES WHERE id = 19"
+    param = {'id': picture_id}
+    #c.execute(sql, param)
+    ablob, ext, afile = c.fetchone()
+    filename = afile + ext
+    with open(filename, 'wb') as output_file:
+        output_file.write(ablob)
+    return filename
+
+
+dbname = "ImageC.db"
+db_file = create_or_open_db(dbname)
+path = "snippets/"
+loadimages(dbname, path)
+filename = get_image(16)
+print filename
+Image(filename=filename)
+
+-----------------
+store, retrieve images,SQLite Databasestore,
+retrieve images, from SQLite , Database
+
+
+Keywords: store, retrieve images, from SQLite Database 
+ -----------------------------
+
+34 
+
+try:
+        mercury = wikipedia.summary("Mercury")
+except wikipedia.exceptions.DisambiguationError as e:
+        lines = str(e.options)
+        lines=lines.replace("u'","");lines=lines.replace("', ","
+")
+        lines=lines.replace("[","");lines=lines.replace("]","")
+        lines=lines.replace('u"','');lines=lines.replace('"','')
+        with open("textwik.txt", "w")as f:
+                f.write(lines) 
+f.close()
+bad_words = ['(disambiguation)', 'All pages']
+with open('textwik.txt') as oldfile, open('usewik.txt', 'w') as newfile:
+    for line in oldfile:
+        if not any(bad_word in line for bad_word in bad_words):
+            newfile.write(line)
+            
+---------------
+wikipedia , bad_words, bad words, disambiguation, remove lines from text
+
+
+Keywords: wikipedia , bad_words, bad words, disambiguation, remove lines from text  
+ -----------------------------
+
+35 
+
+%%writefile Image2SQLite.py
+import sqlite3
+import os.path
+from os import listdir, getcwd
+from IPython.core.display import Image 
+
+def getImage_list(rel_path):
+    abs_path = os.path.join(os.getcwd(),rel_path)
+    print 'abs_path =', abs_path
+    dir_files = os.listdir(abs_path)
+    return dir_files
+
+def create_or_open_db(dbname):
+    db_is_new = not os.path.exists(db_file)
+    conn = sqlite3.connect(db_file)
+    if db_is_new:
+        print 'Creating schema'
+        sql = '''create table if not exists images(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        image BLOB,
+        TYPE TEXT,
+        imagE TEXT);'''
+        conn.execute(sql) # shortcut for conn.cursor().execute(sql)
+    else:
+        print 'Schema exists
+'
+        conn.commit()
+        conn.close()
+    return conn
+
+def insertImage(dbname, imageFile):
+    with open(imageFile, 'rb') as input_file:
+        conn = sqlite3.connect(dbname)
+        c = conn.cursor()
+        ablob = input_file.read()
+        base=os.path.basename(imageFile)
+        afile, ext = os.path.splitext(base)
+        sql = '''INSERT INTO images
+        (image, TYPE, imagE)
+        VALUES(?, ?, ?);'''
+        c.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
+        conn.commit()
+
+def loadimagE(dbname, path):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    #conn.execute("DELETE FROM images")
+    for fn in image_list:
+        imageFile = path+"/"+fn
+        insertImage(imageFile)
+
+    for r in c.execute("SELECT rowid, imagE FROM images"):
+        print r[0],r[1]
+   
+    conn.commit()
+    conn.close()
+
+def image_id(dbname):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    rows = c.execute("SELECT rowid, TYPE, imagE FROM images")
+    for row in rows:
+        print row[0],row[2]+row[1]    
+    return
+    
+def get_image(dbname,image_id):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    c.execute("SELECT image, TYPE, imagE FROM images WHERE id = ?;",(image_id,))
+    #sql = "SELECT image, TYPE, imagE FROM images WHERE id = 19"
+    param = {'id': image_id}
+    #c.execute(sql, param)
+    ablob, ext, afile = c.fetchone()
+    filename = afile + ext
+    with open(filename, 'wb') as output_file:
+        output_file.write(ablob)
+    return filename
+---------------
+USAGE:
+import Image2Data
+picture_list = Image2Data.get_picture_list('snippets')
+print picture_list
+
+import Image2Data
+dbname = "ImageE.db"
+Image2Data.create_or_open_db(dbname)
+
+#insert one image
+import Image2Data
+dbname = "ImageD.db"
+picture_file = "01.jpg"
+Image2Data.insert_picture(dbname, picture_file)
+
+import Image2Data
+dbname = "ImageD.db"
+path = "snippets"
+loadimages(dbname, path)
+
+def image_id(dbname):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    rows = c.execute("SELECT rowid, TYPE, FILE_NAME FROM PICTURES")
+    for row in rows:
+        print row[0],row[2]+row[1]
+    
+#list images by id
+dbname = "ImageD.db"
+image_id(dbname)
+
+#retrieve image by id
+filename = get_image(dbname,1)
+print filename
+Image(filename=filename)
+
+
+
+
+Keywords: wikipedia , bad_words, bad words, disambiguation, remove lines from text  
+ -----------------------------
+
+36 
+
+%%writefile Image2SQLite.py
+import sqlite3
+import os.path
+from os import listdir, getcwd
+from IPython.core.display import Image 
+
+def getImage_list(rel_path):
+    abs_path = os.path.join(os.getcwd(),rel_path)
+    print 'abs_path =', abs_path
+    dir_files = os.listdir(abs_path)
+    return dir_files
+
+def create_or_open_db(dbname):
+    db_is_new = not os.path.exists(db_file)
+    conn = sqlite3.connect(db_file)
+    if db_is_new:
+        print 'Creating schema'
+        sql = '''create table if not exists images(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        image BLOB,
+        TYPE TEXT,
+        imagE TEXT);'''
+        conn.execute(sql) # shortcut for conn.cursor().execute(sql)
+    else:
+        print 'Schema exists
+'
+        conn.commit()
+        conn.close()
+    return conn
+
+def insertImage(dbname, imageFile):
+    with open(imageFile, 'rb') as input_file:
+        conn = sqlite3.connect(dbname)
+        c = conn.cursor()
+        ablob = input_file.read()
+        base=os.path.basename(imageFile)
+        afile, ext = os.path.splitext(base)
+        sql = '''INSERT INTO images
+        (image, TYPE, imagE)
+        VALUES(?, ?, ?);'''
+        c.execute(sql,[sqlite3.Binary(ablob), ext, afile]) 
+        conn.commit()
+
+def loadimagE(dbname, path):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    #conn.execute("DELETE FROM images")
+    for fn in image_list:
+        imageFile = path+"/"+fn
+        insertImage(imageFile)
+
+    for r in c.execute("SELECT rowid, imagE FROM images"):
+        print r[0],r[1]
+   
+    conn.commit()
+    conn.close()
+
+def image_id(dbname):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    rows = c.execute("SELECT rowid, TYPE, imagE FROM images")
+    for row in rows:
+        print row[0],row[2]+row[1]    
+    return
+    
+def get_image(dbname,image_id):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    c.execute("SELECT image, TYPE, imagE FROM images WHERE id = ?;",(image_id,))
+    #sql = "SELECT image, TYPE, imagE FROM images WHERE id = 19"
+    param = {'id': image_id}
+    #c.execute(sql, param)
+    ablob, ext, afile = c.fetchone()
+    filename = afile + ext
+    with open(filename, 'wb') as output_file:
+        output_file.write(ablob)
+    return filename
+---------------
+USAGE:
+import Image2Data
+picture_list = Image2Data.get_picture_list('snippets')
+print picture_list
+
+import Image2Data
+dbname = "ImageE.db"
+Image2Data.create_or_open_db(dbname)
+
+#insert one image
+import Image2Data
+dbname = "ImageD.db"
+picture_file = "01.jpg"
+Image2Data.insert_picture(dbname, picture_file)
+
+import Image2Data
+dbname = "ImageD.db"
+path = "snippets"
+loadimages(dbname, path)
+
+def image_id(dbname):
+    conn = sqlite3.connect(dbname)
+    c = conn.cursor()
+    rows = c.execute("SELECT rowid, TYPE, FILE_NAME FROM PICTURES")
+    for row in rows:
+        print row[0],row[2]+row[1]
+    
+#list images by id
+dbname = "ImageD.db"
+image_id(dbname)
+
+#retrieve image by id
+filename = get_image(dbname,1)
+print filename
+Image(filename=filename)
+------------
+images to database , image2data , store images, store images as data, SQLite images
+
+
+
+Keywords: images to database , image2data , store images, store images as data, SQLite images 
+ -----------------------------
+
+37 
+
+# Get number of words in a file
+fname = raw_input("Enter file name: ")
+num_words = 0
+with open(fname, 'r') as f:
+    for line in f:
+        words = line.split()
+        num_words += len(words)
+print "Number of words: ",num_words
+ 
+
+
+Keywords: Get words file number words file 'Get number of words in a file' 
+ -----------------------------
+
+38 
+
+from time import sleep
+topic = raw_input("Research : ")
+fname = topic.replace(" ", "")+".txt"
+fname = "Wiki_"+fname
+f =open(fname, "w")
+f.close()
+import wikipedia
+rows = wikipedia.search(topic)
+for row in rows:
+    sleep(1)
+    para = wikipedia.summary(row)
+    para = '
+
+'.join((row, para)).encode('utf-8').strip()
+    enter = open(fname, "a")
+    enter.write(para)
+    enter.close()
+    print para
+enter.close()
+
+
+Keywords: search summary wikipedia text file  
+ -----------------------------
+
+39 
+
+# %load SearchFilename.py
+'''
+Search a filename for a phrase and how many following lines to display
+USAGE:
+import SearchFilename
+filename = "hek.txt"
+length = 4
+SearchFilename.searchfilename(filename, length)
+'''
+def searchfilename(filename, length):
+    f = open(filename, "r")
+    searchlines = f.readlines()
+    f.close()
+    search = str(raw_input("Search Phrase : "))
+    for i, line in enumerate(searchlines):
+        if search in line: 
+            for l in searchlines[i:i+length]: print l,
+            print
+            
+USAGE:
+import SearchFilename
+filename = "Automate-the-Boring-Stuff.txt"
+# length = how many lines after
+length = 4
+SearchFilename.searchfilename(filename, length) 
+
+------
+search text file search file module import searchfile
+
+
+
+
+Keywords: search text file search file module import searchfile 
+ -----------------------------
+
+40 
+
+import os
+import timeit
+def txsearch():
+    # Ask to enter string to search
+    Sstring = raw_input("Search Phrase")
+    for fname in os.listdir('./'):
+       # Apply file type filter   
+       if fname.endswith(".txt"):
+            # Open file for reading
+            fo = open(fname)
+            # Read the first line from the file
+            line = fo.readline()
+            # Initialize counter for line number
+            line_no = 1
+            # Loop until EOF
+            while line != '' :
+                    index = line.find(Sstring)
+                    if ( index != -1) :
+                        # Set some parameters no lines longer than 240 characters 
+                        # or less than search phrase +30 characters 
+                        if len(line)< 240 and len(line)> len(Sstring)+20 :
+                            #print(fname, "[", line_no, ",", index, "] ", line)
+                            #print fname,line[1:-8],"  "
+                            print fname,line_no,line
+                    # Read next line
+                    line = fo.readline()  
+                    # Increment line counter
+                    line_no += 1
+            # Close the files
+            fo.close()
+            
+
+------
+search text file search file module import searchfile
+
+
+
+
+Keywords: search text file search file module import searchfile 
+ -----------------------------
+
+41 
+
+import sys
+import tweepy
+import csv
+import Key
+
+#pass security information to variables
+consumer_key = Key.twiter()[0]
+consumer_secret = Key.twiter()[1]
+access_key = Key.twiter()[2]
+access_secret = Key.twiter()[3]
+
+#use variables to access twitter
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_key, access_secret)
+api = tweepy.API(auth)
+
+#create an object called 'customStreamListener'
+class CustomStreamListener(tweepy.StreamListener):
+
+    def on_status(self, status):
+        print (status.author.screen_name, status.created_at, status.text)
+        # Writing status data
+        with open('OutputStreaming.txt', 'a') as f:
+            writer = csv.writer(f)
+            #status.author.screen_name = status.author.screen_name.encode('UTF-8')
+            #status.text.encode = status.text.encode('UTF-8')            
+            writer.writerow([status.author.screen_name.encode('UTF-8'), status.created_at, status.text.encode('utf8')])
+
+
+    def on_error(self, status_code):
+        print >> sys.stderr, 'Encountered error with status code:', status_code
+        return True # Don't kill the stream
+
+    def on_timeout(self):
+        print >> sys.stderr, 'Timeout...'
+        return True # Don't kill the stream
+
+
+    def titles():
+        # Writing csv titles
+        with open('OutputStreaming.txt', 'a') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(['Author', 'Date', 'Text'])
+            
+def main():
+    streamingAPI = tweepy.streaming.Stream(auth, CustomStreamListener())
+    #with open("tokens.txt", "r") as f:
+    with open("tokens2.txt", "r") as f:    
+        tokens = f.readlines()
+
+        streamingAPI.filter(track=tokens)
+        #streamingAPI.filter(track=['Dallas', 'NewYork'])
+
+
+        #status.text.encode('utf-8')
+        #writer.writerow([unicode(s).encode("utf-8") for s in row])
+        #writer.writerow([unicode('Author', 'Date', 'Text').encode("utf-8") for 'Author', 'Date', 'Text' in row])
+
+
+
+
+Keywords: csv to text tweepy to text tweepy tweepy streaming twitter import tweepy 
+ -----------------------------
+
+42 
+
+def tidyt(in_string):    
+    texout = in_string.replace("', u'", "  ");texout = texout.replace("\u2018", "")
+    texout = texout.replace("\u2019 ", "");texout = texout.replace("%", "")
+    texout = texout.replace("[u'", "");texout = texout.replace(" u'", "")
+    texout = texout.replace(', u"', ' ');texout = texout.replace('",', ' ')
+    texout = texout.replace("'", '');texout = texout.replace("Mr.  ", 'Mr. ')
+    texout = texout.replace(",", '');texout = texout.replace(".", '')
+    ftexout =texout.replace("']", "")
+    return ftexout
+
+
+
+Keywords: clean text tidy text textout replace string.replace 
+ -----------------------------
+
+43 
+
+from textblob import TextBlob
+import random
+import sys
+
+# stdin's read() method just reads in all of standard input as a string;
+# use the decode method to convert to ascii (textblob prefers ascii)
+text = sys.stdin.read().decode('ascii', errors="replace")
+blob = TextBlob(text)
+
+short_sentences = list()
+for sentence in blob.sentences:
+    if len(sentence.words) <= 5:
+        short_sentences.append(sentence.replace("
+", " "))
+
+for item in random.sample(short_sentences, 10):
+	print item
+
+
+Keywords: blob text blob TextBlog stdin Short Sentences 
+ -----------------------------
+
+Searches of 'snippet.db' return formated code
+
+#Returned code can be cut and pasted
+
+import sqlite3
+
+import sys
+
+conn = sqlite3.connect('snippet.db')
+
+conn.text_factory = str
+
+c = conn.cursor()
+
+count=0;req=200
+
+search = raw_input("Search : ")
+
+for row in c.execute('SELECT * FROM snippet WHERE text MATCH ?', (search,)):    
+
+    count=count+1
+
+    #print count,"by",(row)[2],"\n",(row)[1],"\n"
+
+    print count,"-",(row)[1]," -- by",(row)[2],"\n"
+
+    if count > req:
+
+        conn.close()
+
+        sys.exit()
+
+Search : factory
+1 - 
+def insert_info(store):
+    with sqlite3.connect("misc.db") as db:
+        #use a text_factory that can interpret 8-bit bytestrings 
+        db.text_factory = str
+        cursor = db.cursor()
+        #db.text_factory = str
+        sql = "insert into storeit (data0, data1, data2) values (?, ?, ?)"
+        cursor.execute(sql, store)
+        db.commit()
+        
+        OR
+        conn.text_factory = str
+ -- by text_factory, 8-bit bytestrings, 8-bit 
+
+2 - 
+import sqlite3
+import sys
+conn = sqlite3.connect('snippet.db')
+conn.text_factory = str
+c = conn.cursor()
+count=0
+req=200
+search = raw_input("Search")
+#for row in c.execute('SELECT rowid,* FROM tweets WHERE text MATCH %s' % search):
+for row in c.execute('SELECT * FROM snippet WHERE keywords MATCH ?', (search,)):    
+    count=count+1
+    #print count,"by",(row)[2],"
+",(row)[1],"
+"
+    print count,"-",(row)[1]," -- by",(row)[2],"
+"
+    if count > req:
+        conn.close()
+        sys.exit()
+ -- by text_factory, 8-bit bytestrings, 8-bit 
+
+3 - 
+import sqlite3
+import time
+#account = "TEDTalks.txt"
+account = "symmetrymag.txt"
+#account = "elonmusk.txt"
+#account = "realDonaldTrump.txt"
+user = account[:-4]
+lines = open(account,"r")
+line = lines.readline()
+for line in lines:
+    conn = sqlite3.connect('collection.db')
+    conn.text_factory = str
+    c = conn.cursor()
+    c.execute("INSERT INTO tweets VALUES (?,?)", (line, user)) 
+    conn.commit()
+    conn.close()        
+    
+    #print line         
+
+conn.commit()
+conn.close()                 
+ -- by insert data, text file to database, text to data 
+
+​
+
